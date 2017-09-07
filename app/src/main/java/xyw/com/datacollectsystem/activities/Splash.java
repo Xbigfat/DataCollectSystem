@@ -30,7 +30,7 @@ public class Splash extends BaseActivity {
     }
 
     @Override
-    protected void findViewByID() {
+    protected void findViewsByID() {
 
     }
 

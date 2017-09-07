@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityController.addActivity(this);
         getSupportActionBar().hide();
         init();
-        findViewByID();
+        findViewsByID();
         setListener();
     }
 
@@ -42,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 控件初始化
      */
-    protected abstract void findViewByID();
+    protected abstract void findViewsByID();
 
     /**
      * 设置监听
