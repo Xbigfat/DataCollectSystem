@@ -10,6 +10,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyw.com.datacollectsystem.utils.ActivityController;
+
 /**
  * Created by 31429 on 2017/9/6.
  */
@@ -62,21 +64,3 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 }
 
-class ActivityController {
-    private static List<Activity> list = new ArrayList<>();
-
-    public static void addActivity(Activity activity) {
-        list.add(activity);
-    }
-
-    public static void removeActivity(Activity activity) {
-        list.remove(activity);
-    }
-
-    public static void finishAll() {
-        for (Activity activity : list) {
-            activity.finish();
-        }
-    }
-
-}
