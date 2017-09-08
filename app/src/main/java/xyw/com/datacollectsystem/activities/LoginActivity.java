@@ -1,6 +1,7 @@
 package xyw.com.datacollectsystem.activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -58,7 +59,9 @@ public class LoginActivity extends BaseActivity {
             makeToast(mThis, "You clicked login button");
             String username = username_edtx.getText().toString();
             String pwd = pwd_edtx.getText().toString();
-
+            Intent intent = new Intent(mThis, MainActivity.class);
+            startActivity(intent);
+            //mThis.finish();
         }
     }
 
