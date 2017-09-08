@@ -12,6 +12,8 @@ import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.activities.Splash;
 import xyw.com.datacollectsystem.entity.workEntity;
 
+import static xyw.com.datacollectsystem.BaseActivity.makeToast;
+
 /**
  * Created by 31429 on 2017/9/7.
  */
@@ -71,7 +73,7 @@ public class CheckVersion {
 
             @Override
             public void onRequestError(UpDataInfo obj, Exception e) {
-                BaseActivity.makeToast(mcontext, e.getMessage());
+                makeToast(mcontext, e.getMessage());
                 ((Splash) mcontext).checkError();
             }
 

@@ -10,9 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
+
+import static xyw.com.datacollectsystem.utils.StaticMethod.isIPv4Address;
 
 /**
  * Created by 31429 on 2017/9/7.
@@ -52,7 +55,7 @@ public class LoginActivity extends BaseActivity {
     private class loginBtnListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            BaseActivity.makeToast(mThis, "You clicked login button");
+            makeToast(mThis, "You clicked login button");
             String username = username_edtx.getText().toString();
             String pwd = pwd_edtx.getText().toString();
 
@@ -87,14 +90,9 @@ public class LoginActivity extends BaseActivity {
             }
 
 
-            AlertDialog alertDialog = new AlertDialog.Builder(mThis)
+            final AlertDialog alertDialog = new AlertDialog.Builder(mThis)
                     .setView(serverDialog)
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    })
+                    .setPositiveButton("确定", null)
                     .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -102,7 +100,29 @@ public class LoginActivity extends BaseActivity {
                         }
                     }).create();
             alertDialog.show();
-
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String ip = setIp.getText().toString().trim();
+                    String port = setPort.getText().toString().trim();
+                    String method = setMethod.getText().toString().trim();
+                    if (!isIPv4Address(ip)) {
+                        makeToast(mThis, "IP地址不合法！");
+                        return;
+                    }
+                    if (port.equals("") || method.equals("")) {
+                        makeToast(mThis, "配置出错，请检查！");
+                        return;
+                    }
+                    SharedPreferences.Editor editor = serverIp.edit();
+                    editor.putString("ip", ip);
+                    editor.putString("port", port);
+                    editor.putString("method", method);
+                    editor.apply();
+                    alertDialog.dismiss();
+                    makeToast(mThis, "服务器地址成功更改为：\n http://" + ip + "/" + port + "/" + method, Toast.LENGTH_LONG);
+                }
+            });
         }
     }
 }

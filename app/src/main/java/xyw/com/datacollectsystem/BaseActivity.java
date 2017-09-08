@@ -1,14 +1,10 @@
 package xyw.com.datacollectsystem;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import xyw.com.datacollectsystem.utils.ActivityController;
 
@@ -57,6 +53,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     public static void makeToast(Context context, String msg) {
         if (mToast == null) {
             mToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+        } else {
+            mToast.setText(msg);
+        }
+        mToast.show();
+    }
+
+    public static void makeToast(Context context, String msg, int time) {
+        if (mToast == null) {
+            mToast = Toast.makeText(context, msg, time);
         } else {
             mToast.setText(msg);
         }
