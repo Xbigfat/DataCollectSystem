@@ -1,4 +1,4 @@
-package xyw.com.datacollectsystem.activities;
+package xyw.com.datacollectsystem.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

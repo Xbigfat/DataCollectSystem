@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="login_EditText">#000B53</color>
-    <color name="login_EditTextLine">#425F9a</color>
+    <color name="login_EditTextLine">#425f9a</color>
 </resources>

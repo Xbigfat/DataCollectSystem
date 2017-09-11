@@ -8,8 +8,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import xyw.com.datacollectsystem.BaseActivity;
-import xyw.com.datacollectsystem.activities.Splash;
+import xyw.com.datacollectsystem.activity.Splash;
 import xyw.com.datacollectsystem.entity.workEntity;
 
 import static xyw.com.datacollectsystem.BaseActivity.makeToast;

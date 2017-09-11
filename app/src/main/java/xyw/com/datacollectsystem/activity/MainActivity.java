@@ -1,4 +1,4 @@
-package xyw.com.datacollectsystem.activities;
+package xyw.com.datacollectsystem.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,7 +18,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        setContentView(R.layout.main);
+        setContentView(R.layout.main_constraint_layout);
     }
 
     @Override

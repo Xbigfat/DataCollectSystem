@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/login_bg">
+    android:background="@mipmap/login_background_1">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -113,7 +113,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="安徽互联电子工程有限责任公司"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@color/login_EditTextLine"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -127,7 +127,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:text="配置服务器"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@color/login_EditTextLine"
         app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

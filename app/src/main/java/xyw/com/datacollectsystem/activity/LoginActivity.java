@@ -1,4 +1,4 @@
-package xyw.com.datacollectsystem.activities;
+package xyw.com.datacollectsystem.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
