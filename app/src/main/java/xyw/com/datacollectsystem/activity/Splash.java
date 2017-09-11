@@ -26,7 +26,7 @@ public class Splash extends BaseActivity {
     protected void init() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.splash);
+        setContentView(R.layout.splash_1_default);
     }
 
     @Override

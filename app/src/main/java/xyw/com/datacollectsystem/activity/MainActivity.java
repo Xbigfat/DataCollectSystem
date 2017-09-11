@@ -18,7 +18,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        setContentView(R.layout.main_constraint_layout);
+        setContentView(R.layout.main_2_tablerow);
     }
 
     @Override

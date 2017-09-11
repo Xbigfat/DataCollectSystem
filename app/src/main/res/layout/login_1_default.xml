@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/login_background_1">
+    android:background="@mipmap/login_background_blur">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -20,7 +20,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
-        app:srcCompat="@mipmap/login_logo" />
+        app:srcCompat="@mipmap/icon_logo" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -40,7 +40,7 @@
             android:id="@+id/imageView2"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:srcCompat="@mipmap/tb_yonghu" />
+            app:srcCompat="@mipmap/login_icon_pwd" />
 
         <EditText
             android:id="@+id/login_username"
@@ -74,7 +74,7 @@
             android:id="@+id/imageView3"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:srcCompat="@mipmap/tb_mima"
+            app:srcCompat="@mipmap/login_icon_username"
             tools:layout_editor_absoluteX="-50dp"
             tools:layout_editor_absoluteY="-2dp" />
 

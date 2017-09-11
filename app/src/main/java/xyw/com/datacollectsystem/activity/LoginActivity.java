@@ -35,7 +35,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        setContentView(R.layout.login);
+        setContentView(R.layout.login_1_default);
         mThis = LoginActivity.this;
     }
 
@@ -56,7 +56,7 @@ public class LoginActivity extends BaseActivity {
     private class loginBtnListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            makeToast(mThis, "You clicked login button");
+            makeToast(mThis, "You clicked login_1_default button");
             String username = username_edtx.getText().toString();
             String pwd = pwd_edtx.getText().toString();
             Intent intent = new Intent(mThis, MainActivity.class);
