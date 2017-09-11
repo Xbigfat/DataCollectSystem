@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -21,7 +20,6 @@ import xyw.com.datacollectsystem.R;
 
 public class EditTextWithClear extends EditText implements View.OnFocusChangeListener, TextWatcher {
 
-    private Drawable right;
     private boolean hasFocus;
     private Drawable mClearDrawable;
 

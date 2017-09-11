@@ -2,6 +2,8 @@ package xyw.com.datacollectsystem.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Button;
+import android.widget.EditText;
 
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
@@ -11,6 +13,8 @@ import xyw.com.datacollectsystem.R;
  */
 
 public class MainActivity extends BaseActivity {
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

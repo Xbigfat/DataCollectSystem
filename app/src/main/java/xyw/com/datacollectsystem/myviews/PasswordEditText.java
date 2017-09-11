@@ -33,6 +33,7 @@ public class PasswordEditText extends EditText {
     public PasswordEditText(Context context) {
         this(context, null);
     }
+
     public PasswordEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PasswordEditText);
@@ -114,6 +115,7 @@ public class PasswordEditText extends EditText {
         mIsShowPwdIcon = savedState.isShowingIcon();
         restorePasswordIconVisibility(mIsShowPwdIcon);
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (mDrawableSide == null) {

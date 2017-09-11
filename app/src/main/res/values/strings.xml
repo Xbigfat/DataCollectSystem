@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">报废监管系统</string>
-    <string name="serverIP">60.166.5.118</string>
-    <string name="port">8087</string>
-    <string name="method">virWeb</string>
 </resources>

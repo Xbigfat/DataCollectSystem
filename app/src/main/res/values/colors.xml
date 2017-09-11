@@ -3,6 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="login_EditText">#000B53</color>
+    <color name="login_EditText">#3da0f6</color>
     <color name="login_EditTextLine">#425f9a</color>
 </resources>
