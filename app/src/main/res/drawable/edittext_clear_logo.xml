@@ -2,4 +2,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:drawable="@mipmap/edittext_clear_logo_pressed"/>
     <item android:drawable="@mipmap/edittext_clear_logo_normal"/>
+
 </selector>
