@@ -1,9 +1,7 @@
 package xyw.com.datacollectsystem.myviews;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,37 +46,6 @@ public class EditTextWithClear extends EditText implements View.OnFocusChangeLis
         setClearIconVisible(false);
         setOnFocusChangeListener(this);
         addTextChangedListener(this);
-    }
-
-    public void initThemeColor(int color) {
-
-        Drawable[] drawables = this.getCompoundDrawablesRelative();
-
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawables[0].mutate();
-        if (bitmapDrawable != null) {
-            Bitmap b = replaceColorPix(color, bitmapDrawable.getBitmap());
-            bitmapDrawable = new BitmapDrawable(getResources(), b);
-
-            bitmapDrawable.setBounds(0, 0, b.getWidth(), b.getHeight());
-            this.setCompoundDrawablesRelative(bitmapDrawable, null, null, null);
-        }
-    }
-
-    public Bitmap replaceColorPix(int themeColor, Bitmap src) {
-        int width = src.getWidth();
-        int height = src.getHeight();
-        int[] colors = new int[width * height];
-        int tc = themeColor & 0x00FFFFFF;
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                int color = src.getPixel(i, j);
-                int alpha = color & 0xFF000000;
-                if (alpha != 0) {
-                    colors[j * width + i] = alpha | tc;
-                }
-            }
-        }
-        return Bitmap.createBitmap(colors, width, height, src.getConfig());
     }
 
     private void setClearIconVisible(boolean isShowClearIcon) {

@@ -47,15 +47,10 @@ public class LoginActivitySecond extends BaseActivity {
     @Override
     protected void setListener() {
         login_btn.setOnClickListener(new loginBtnListener());
-        change_server.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeServerGlobal(mThis);
-            }
-        });
+        change_server.setOnClickListener(new changeServerListener());
     }
 
-    class loginBtnListener implements View.OnClickListener {
+    private class loginBtnListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(mThis, MainActivity.class);
@@ -63,4 +58,10 @@ public class LoginActivitySecond extends BaseActivity {
         }
     }
 
+    private class changeServerListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            changeServerGlobal(mThis);
+        }
+    }
 }
