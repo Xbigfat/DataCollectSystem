@@ -2,12 +2,14 @@ package xyw.com.datacollectsystem.utils;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Handler;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import xyw.com.datacollectsystem.activity.LoginActivity;
 import xyw.com.datacollectsystem.activity.Splash;
 import xyw.com.datacollectsystem.entity.workEntity;
 
@@ -62,7 +64,10 @@ public class CheckVersion {
         work.setOnUiListener(new OnLocalWorkListener<UpDataInfo>() {
             @Override
             public void onRequestCompleted(UpDataInfo obj) {
-
+                makeToast(mcontext, "completed");
+                Intent intent = new Intent(mcontext, LoginActivity.class);
+                mcontext.startActivity(intent);
+                mcontext.finish();
             }
 
             @Override
