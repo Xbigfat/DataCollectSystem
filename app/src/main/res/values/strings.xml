@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">报废监管系统</string>
+    <string name="serverurl">/version.xml</string>
 </resources>

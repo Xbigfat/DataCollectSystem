@@ -6,8 +6,8 @@ package xyw.com.datacollectsystem.utils;
 
 public class Constant {
 
-    public static String server_address = "60.166.5.118";
-    public static String server_port = "8087";
-    public static String server_methodName = "virWeb";
+    public static String server_address = "192.168.0.248";
+    public static String server_port = "80";
+    public static String server_methodName = "AhpsService";
 
 }

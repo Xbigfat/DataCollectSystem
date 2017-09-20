@@ -7,8 +7,7 @@ import android.view.WindowManager;
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
 import xyw.com.datacollectsystem.entity.AppVersion;
-import xyw.com.datacollectsystem.network.CheckVersion;
-import xyw.com.datacollectsystem.network.OnNetworkRequest;
+import xyw.com.datacollectsystem.network.CheckVersionSecond;
 
 /**
  * Created by 31429 on 2017/9/7.
@@ -21,33 +20,8 @@ public class Splash extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CheckVersion checkVersion = new CheckVersion(mThis);
-        checkVersion.request(new OnNetworkRequest() {
-            @Override
-            public void networkInvalid() {
-                makeToast(mThis, "网络请求出错");
-            }
-
-            @Override
-            public void onRequestError(Exception e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onRequestCompleted(Object obj) {
-                appVersion = (AppVersion) obj;
-            }
-
-            @Override
-            public void onRequestLoading() {
-
-            }
-
-            @Override
-            public void onRequestTimeOut() {
-
-            }
-        });
+        CheckVersionSecond checkVersionSecond = new CheckVersionSecond(mThis);
+        checkVersionSecond.request();
     }
 
     @Override
