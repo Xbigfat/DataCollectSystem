@@ -21,8 +21,6 @@ public class LoginProgress {
             onNetworkRequest.networkInvalid();
         }
         onNetworkRequest.onRequestLoading();
-
-
     }
 
 }
