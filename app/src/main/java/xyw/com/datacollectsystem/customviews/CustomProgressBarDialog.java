@@ -39,15 +39,12 @@ public class CustomProgressBarDialog extends Dialog {
     public CustomProgressBarDialog(Context context) {
         super(context, R.style.MyDialogStyle);
         this.mContext = context;
-
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        inflater = (LayoutInflater) mContext
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.mydialog_loading, null);
         mProgress = (ProgressBar) view.findViewById(R.id.progress);
         mMessageView = (TextView) view.findViewById(R.id.message);
@@ -56,8 +53,7 @@ public class CustomProgressBarDialog extends Dialog {
         mHeaderImageMatrix = new Matrix();
         mRefreshImage.setImageMatrix(mHeaderImageMatrix);
 
-        mRotateAnimation = new RotateAnimation(0, 720, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-                0.5f);
+        mRotateAnimation = new RotateAnimation(0, 720, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         mRotateAnimation.setInterpolator(new LinearInterpolator());
         mRotateAnimation.setDuration(1200);
         mRotateAnimation.setRepeatCount(Animation.INFINITE);
