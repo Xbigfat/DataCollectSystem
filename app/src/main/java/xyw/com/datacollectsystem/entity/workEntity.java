@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by 31429 on 2017/9/7.
  */
 
-public class WorkEntity<T> implements Serializable {
+public class workEntity<T> implements Serializable {
     private static final long serialVersionUID = 8349877244525848802L;
 
     public final static int REQUEST_COMPLETED = 2;
