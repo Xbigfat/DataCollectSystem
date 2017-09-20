@@ -1,6 +1,7 @@
 package xyw.com.datacollectsystem.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
+import xyw.com.datacollectsystem.customviews.CustomProgressBarDialog;
 import xyw.com.datacollectsystem.customviews.EditTextWithClear;
 import xyw.com.datacollectsystem.customviews.PasswordEditText;
 import xyw.com.datacollectsystem.network.LoginProgress;
@@ -25,6 +27,7 @@ public class LoginActivitySecond extends BaseActivity {
     private Button login_btn;
     private LoginActivitySecond mThis;
     private TextView change_server;
+    private CustomProgressBarDialog pd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,12 +76,21 @@ public class LoginActivitySecond extends BaseActivity {
 
                 @Override
                 public void onRequestLoading() {
-
+                    pd = new CustomProgressBarDialog(mThis);
+                    pd.setCancelable(false);
+                    pd.setMessage("正在登录");
+                    pd.show();
                 }
 
                 @Override
                 public void onRequestTimeOut() {
-
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            pd.dismiss();
+                            makeToast(mThis, "网络超时，请稍后再试！");
+                        }
+                    }, 5000);
                 }
             });
         }

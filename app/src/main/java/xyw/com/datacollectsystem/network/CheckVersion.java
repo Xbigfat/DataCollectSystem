@@ -1,4 +1,4 @@
-package xyw.com.datacollectsystem.utils;
+package xyw.com.datacollectsystem.network;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,6 +12,9 @@ import java.net.URL;
 import xyw.com.datacollectsystem.activity.LoginActivity;
 import xyw.com.datacollectsystem.activity.Splash;
 import xyw.com.datacollectsystem.entity.WorkEntity;
+import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
+import xyw.com.datacollectsystem.utils.OnLocalWorkListener;
+import xyw.com.datacollectsystem.utils.UpDataInfo;
 
 import static xyw.com.datacollectsystem.BaseActivity.makeToast;
 
