@@ -1,6 +1,5 @@
 package xyw.com.datacollectsystem.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -10,8 +9,10 @@ import android.widget.TextView;
 
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
-import xyw.com.datacollectsystem.myviews.EditTextWithClear;
-import xyw.com.datacollectsystem.myviews.PasswordEditText;
+import xyw.com.datacollectsystem.customviews.EditTextWithClear;
+import xyw.com.datacollectsystem.customviews.PasswordEditText;
+import xyw.com.datacollectsystem.network.LoginProgress;
+import xyw.com.datacollectsystem.network.OnNetworkRequest;
 
 import static xyw.com.datacollectsystem.utils.GlobalMethod.changeServerGlobal;
 
@@ -53,8 +54,33 @@ public class LoginActivitySecond extends BaseActivity {
     private class loginBtnListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(mThis, MainActivity.class);
-            startActivity(intent);
+            LoginProgress login = new LoginProgress(username_edtx.getText().toString(), pwd_edtx.getText().toString());
+            login.request(mThis, new OnNetworkRequest() {
+                @Override
+                public void networkInvalid() {
+                    makeToast(mThis, "网络不可用，请检查网络状态");
+                }
+
+                @Override
+                public void onRequestError(Exception e) {
+
+                }
+
+                @Override
+                public void onRequestCompleted(Object obj) {
+
+                }
+
+                @Override
+                public void onRequestLoading() {
+
+                }
+
+                @Override
+                public void onRequestTimeOut() {
+
+                }
+            });
         }
     }
 
@@ -64,4 +90,5 @@ public class LoginActivitySecond extends BaseActivity {
             changeServerGlobal(mThis);
         }
     }
+
 }

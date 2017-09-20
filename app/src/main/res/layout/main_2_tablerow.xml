@@ -41,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView8">
 
         <TableRow
+            android:id="@+id/main_register_tr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_style"
@@ -78,6 +79,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/main_collect_tr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_style">
@@ -112,6 +114,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/main_query_tr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_style">
@@ -147,6 +150,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/main_pwd_change_tr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_style">

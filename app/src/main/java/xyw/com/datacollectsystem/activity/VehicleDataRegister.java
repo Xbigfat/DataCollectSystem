@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import xyw.com.datacollectsystem.BaseActivity;
+import xyw.com.datacollectsystem.R;
 
 /**
  * Created by 31429 on 2017/9/19.
@@ -17,7 +18,7 @@ public class VehicleDataRegister extends BaseActivity {
 
     @Override
     protected void init() {
-
+        setContentView(R.layout.vehicle_register_default);
     }
 
     @Override

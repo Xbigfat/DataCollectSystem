@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import xyw.com.datacollectsystem.entity.workEntity;
+import xyw.com.datacollectsystem.entity.WorkEntity;
 
 /**
  * Created by 31429 on 2017/9/7.
@@ -15,7 +15,7 @@ public class BaseDoWorkApi<T> {
     private OnWorkListener<T> onListener;
 
     public interface OnWorkListener<T> {
-        workEntity<T> doWork();
+        WorkEntity<T> doWork();
     }
 
     public OnWorkListener<T> getOnListener() {
@@ -59,7 +59,7 @@ public class BaseDoWorkApi<T> {
     class backGroundThread extends Thread {
         @Override
         public void run() {
-            workEntity<T> entity = onListener.doWork();
+            WorkEntity<T> entity = onListener.doWork();
             Bundle bundle = new Bundle();
             bundle.putSerializable("obj", entity);
             Message msg = mHandler.obtainMessage();
@@ -72,26 +72,26 @@ public class BaseDoWorkApi<T> {
     public Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             Bundle bundle = msg.getData();
-            workEntity<T> entity = (workEntity<T>) bundle.get("obj");
+            WorkEntity<T> entity = (WorkEntity<T>) bundle.get("obj");
             switch (msg.what) {
-                case workEntity.REQUEST_ERROR:// 请求出错
+                case WorkEntity.REQUEST_ERROR:// 请求出错
                     if (onUiListener != null) {
                         onUiListener.onRequestError(entity.getData(),
                                 entity.getException());
                     }
                     break;
-                case workEntity.REQUEST_TIME_OUT:// 请求超时
+                case WorkEntity.REQUEST_TIME_OUT:// 请求超时
                     if (onUiListener != null) {
                         onUiListener.onRequestTimeout(entity.getData());
                     }
                     break;
-                case workEntity.REQUEST_COMPLETED:// 请求完成
+                case WorkEntity.REQUEST_COMPLETED:// 请求完成
                     if (onUiListener != null) {
                         onUiListener
                                 .onRequestCompleted(entity.getData());
                     }
                     break;
-                case workEntity.REQUEST_NOTUI_TASK:// 非UI刷新任务
+                case WorkEntity.REQUEST_NOTUI_TASK:// 非UI刷新任务
                     if (onUiListener != null) {
                         onUiListener
                                 .onRequestNotUiTask(entity.getData());

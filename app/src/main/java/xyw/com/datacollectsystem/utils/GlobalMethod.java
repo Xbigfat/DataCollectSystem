@@ -3,6 +3,8 @@ package xyw.com.datacollectsystem.utils;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -101,4 +103,17 @@ public class GlobalMethod {
         });
     }
 
+
+    /**
+     * validateNetworkState() 判断网络状态，无网络链接返回false，网络请求直接终止
+     */
+    public static boolean validateNetworkState(Context context) {
+        if (context != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            return (mNetworkInfo != null && mNetworkInfo.isAvailable());
+        }
+        return false;
+    }
 }

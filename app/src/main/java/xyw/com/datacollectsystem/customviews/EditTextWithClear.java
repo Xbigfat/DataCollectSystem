@@ -1,4 +1,4 @@
-package xyw.com.datacollectsystem.myviews;
+package xyw.com.datacollectsystem.customviews;
 
 import android.content.Context;
 import android.graphics.Rect;

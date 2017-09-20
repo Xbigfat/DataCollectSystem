@@ -11,7 +11,7 @@ import java.net.URL;
 
 import xyw.com.datacollectsystem.activity.LoginActivity;
 import xyw.com.datacollectsystem.activity.Splash;
-import xyw.com.datacollectsystem.entity.workEntity;
+import xyw.com.datacollectsystem.entity.WorkEntity;
 
 import static xyw.com.datacollectsystem.BaseActivity.makeToast;
 
@@ -40,8 +40,8 @@ public class CheckVersion {
         BaseDoWorkApi<UpDataInfo> work = new BaseDoWorkApi<>();
         work.setOnListener(new BaseDoWorkApi.OnWorkListener<UpDataInfo>() {
             @Override
-            public workEntity<UpDataInfo> doWork() {
-                workEntity<UpDataInfo> we = new workEntity<UpDataInfo>();
+            public WorkEntity<UpDataInfo> doWork() {
+                WorkEntity<UpDataInfo> we = new WorkEntity<UpDataInfo>();
                 try {
                     String path = "";
                     String url = "192.168.0.248";
@@ -52,11 +52,11 @@ public class CheckVersion {
                     InputStream is = conn.getInputStream();
                     info = getUpdataInfo(is);
                     we.setData(info);
-                    we.setResultState(workEntity.REQUEST_COMPLETED);
+                    we.setResultState(WorkEntity.REQUEST_COMPLETED);
                 } catch (Exception e) {
                     e.printStackTrace();
                     we.setException(e);
-                    we.setResultState(workEntity.REQUEST_ERROR);
+                    we.setResultState(WorkEntity.REQUEST_ERROR);
                 }
                 return we;
             }
