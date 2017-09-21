@@ -1,7 +1,6 @@
 package xyw.com.datacollectsystem.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +13,6 @@ import xyw.com.datacollectsystem.customviews.CustomProgressBarDialog;
 import xyw.com.datacollectsystem.customviews.EditTextWithClear;
 import xyw.com.datacollectsystem.customviews.PasswordEditText;
 import xyw.com.datacollectsystem.network.LoginProgress;
-import xyw.com.datacollectsystem.network.OnNetworkRequest;
 
 import static xyw.com.datacollectsystem.utils.GlobalMethod.changeServerGlobal;
 
@@ -57,42 +55,8 @@ public class LoginActivitySecond extends BaseActivity {
     private class loginBtnListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            LoginProgress login = new LoginProgress(username_edtx.getText().toString(), pwd_edtx.getText().toString());
-            login.request(mThis, new OnNetworkRequest() {
-                @Override
-                public void networkInvalid() {
-                    makeToast(mThis, "网络不可用，请检查网络状态");
-                }
-
-                @Override
-                public void onRequestError(Exception e) {
-
-                }
-
-                @Override
-                public void onRequestCompleted(Object obj) {
-
-                }
-
-                @Override
-                public void onRequestLoading() {
-                    pd = new CustomProgressBarDialog(mThis);
-                    pd.setCancelable(false);
-                    pd.setMessage("正在登录");
-                    pd.show();
-                }
-
-                @Override
-                public void onRequestTimeOut() {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            pd.dismiss();
-                            makeToast(mThis, "网络超时，请稍后再试！");
-                        }
-                    }, 5000);
-                }
-            });
+            LoginProgress login = new LoginProgress(mThis);
+            login.request(username_edtx.getText().toString(), pwd_edtx.getText().toString());
         }
     }
 

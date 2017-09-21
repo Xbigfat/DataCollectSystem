@@ -29,7 +29,7 @@
         android:background="@drawable/login_edit_style"
         android:digits="1234567890qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
         android:drawablePadding="20dp"
-        android:drawableStart="@mipmap/user_register_password"
+        android:drawableStart="@mipmap/login_custom_account"
         android:hint="账号"
         android:paddingLeft="20dp"
         android:paddingRight="10dp"
@@ -60,7 +60,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_2_username"
         app:pad="20dp"
-        app:start="@mipmap/user_register_account" />
+        app:start="@mipmap/login_custom_password" />
 
     <TextView
         android:id="@+id/login_2_change_server"

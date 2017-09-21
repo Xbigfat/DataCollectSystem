@@ -7,7 +7,7 @@ import android.view.WindowManager;
 
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
-import xyw.com.datacollectsystem.network.CheckVersionSecond;
+import xyw.com.datacollectsystem.network.CheckVersion;
 
 /**
  * Created by 31429 on 2017/9/7.
@@ -22,8 +22,8 @@ public class Splash extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                CheckVersionSecond checkVersionSecond = new CheckVersionSecond(mThis);
-                checkVersionSecond.request();
+                CheckVersion checkVersion = new CheckVersion(mThis);
+                checkVersion.request();
             }
         }, 1000);
     }
