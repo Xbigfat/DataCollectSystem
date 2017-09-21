@@ -15,7 +15,6 @@ import xyw.com.datacollectsystem.network.CheckVersionSecond;
 
 public class Splash extends BaseActivity {
     private Splash mThis = Splash.this;
-    AppVersion appVersion;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

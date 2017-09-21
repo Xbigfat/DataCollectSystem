@@ -27,7 +27,6 @@ import xyw.com.datacollectsystem.entity.AppVersion;
 import xyw.com.datacollectsystem.entity.workEntity;
 import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
 import xyw.com.datacollectsystem.utils.Constant;
-import xyw.com.datacollectsystem.utils.Downloader;
 import xyw.com.datacollectsystem.utils.OnDownloadListener;
 import xyw.com.datacollectsystem.utils.OnLocalWorkListener;
 
@@ -46,28 +45,14 @@ public class CheckVersionSecond {
     private static AppVersion version = new AppVersion();
 
 
-    /**
-     * 获取当前版本号
-     */
-    private String getCurrentVersion() {
-        PackageManager packageManager = mContext.getPackageManager();
-        PackageInfo packInfo;
-        try {
-            packInfo = packageManager.getPackageInfo(mContext.getPackageName(), 0);
-            return packInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return "-1";
-        }
-    }
-
     public CheckVersionSecond(Activity Context) {
         mContext = Context;
+        progressBar = new ProgressDialog(Context);
     }
 
     public void request() {
         BaseDoWorkApi<AppVersion> work = new BaseDoWorkApi<>();
-        work.setOnListener(new BaseDoWorkApi.OnWorkListener<AppVersion>() {
+        work.setWorkListener(new BaseDoWorkApi.OnWorkListener<AppVersion>() {
             @Override
             public workEntity<AppVersion> doWork() {
                 workEntity<AppVersion> we = new workEntity<AppVersion>();
@@ -97,7 +82,7 @@ public class CheckVersionSecond {
                 return we;
             }
         });
-        work.setOnUiListener(new OnLocalWorkListener<AppVersion>() {
+        work.setLocalWorkListener(new OnLocalWorkListener<AppVersion>() {
             @Override
             public void onRequestCompleted(AppVersion obj) {
                 if (!getCurrentVersion().equals(obj.getVersion())) {
@@ -253,5 +238,20 @@ public class CheckVersionSecond {
         mContext.startActivity(intent);
         // 结束程序
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    /**
+     * 获取当前版本号
+     */
+    private String getCurrentVersion() {
+        PackageManager packageManager = mContext.getPackageManager();
+        PackageInfo packInfo;
+        try {
+            packInfo = packageManager.getPackageInfo(mContext.getPackageName(), 0);
+            return packInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return "-1";
+        }
     }
 }

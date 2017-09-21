@@ -1,4 +1,4 @@
-package xyw.com.datacollectsystem.utils;
+package xyw.com.datacollectsystem.network;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,6 +15,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.DecimalFormat;
+
+import xyw.com.datacollectsystem.utils.OnDownloadListener;
 
 /**
  * Created by 31429 on 2017/9/20.
