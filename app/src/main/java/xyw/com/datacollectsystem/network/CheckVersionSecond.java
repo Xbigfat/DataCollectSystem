@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Handler;
 import android.util.Xml;
 import android.widget.Toast;
 
@@ -19,12 +18,12 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Map;
 
 import xyw.com.datacollectsystem.R;
 import xyw.com.datacollectsystem.activity.LoginActivitySecond;
 import xyw.com.datacollectsystem.entity.AppVersion;
 import xyw.com.datacollectsystem.entity.workEntity;
+import xyw.com.datacollectsystem.utils.ActivityController;
 import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
 import xyw.com.datacollectsystem.utils.Constant;
 import xyw.com.datacollectsystem.utils.OnDownloadListener;
@@ -40,8 +39,6 @@ import static xyw.com.datacollectsystem.BaseActivity.makeToast;
 public class CheckVersionSecond {
     private Activity mContext;
     private ProgressDialog progressBar;
-    private Handler handler = new Handler();
-    private Map<String, String> version_map;
     private static AppVersion version = new AppVersion();
 
 
@@ -86,10 +83,8 @@ public class CheckVersionSecond {
             @Override
             public void onRequestCompleted(AppVersion obj) {
                 if (!getCurrentVersion().equals(obj.getVersion())) {
-                    makeToast(mContext, getCurrentVersion() + "\n" + obj.getVersion());
                     update(obj.getUrl(), obj.getDescription());
                 } else {
-                    makeToast(mContext, getCurrentVersion() + "\n" + obj.getVersion());
                     Intent intent = new Intent(mContext, LoginActivitySecond.class);
                     mContext.startActivity(intent);
                     mContext.finish();
@@ -106,6 +101,7 @@ public class CheckVersionSecond {
                 makeToast(mContext, e.getMessage());
                 Intent intent = new Intent(mContext, LoginActivitySecond.class);
                 mContext.startActivity(intent);
+                mContext.finish();
             }
 
             @Override
@@ -138,14 +134,13 @@ public class CheckVersionSecond {
             switch (type) {
                 case XmlPullParser.START_TAG:
                     if ("version".equals(parser.getName())) {
-                        version.setVersion(parser.nextText()); //获取版本号
+                        version.setVersion(parser.nextText());
                     } else if ("url".equals(parser.getName())) {
                         String surl = parser.nextText();
                         String curl = surl.substring(surl.lastIndexOf("/"));
-
-                        version.setUrl(url + curl); //获取要升级的APK文件
+                        version.setUrl(url + curl);
                     } else if ("description".equals(parser.getName())) {
-                        version.setDescription(parser.nextText()); //获取该文件的信息
+                        version.setDescription(parser.nextText());
                     }
                     break;
             }
@@ -156,8 +151,8 @@ public class CheckVersionSecond {
 
     public void update(final String url, String message) {
 
-        new AlertDialog.Builder(mContext).setIcon(R.drawable.load)
-                .setTitle("系统更新").setMessage(message)
+        new AlertDialog.Builder(mContext).setIcon(R.drawable.update)
+                .setTitle("系统更新").setMessage(message).setCancelable(false)
                 .setNegativeButton("浏览器下载", new DialogInterface.OnClickListener() {
 
                     @Override
@@ -167,14 +162,14 @@ public class CheckVersionSecond {
                         Uri content_url = Uri.parse(url);
                         intent.setData(content_url);
                         mContext.startActivity(intent);
+                        ActivityController.finishAll();
                     }
                 })
                 .setPositiveButton("更新", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int whichButton) {
                         progressBar.setMessage("开始下载...");
-                        progressBar
-                                .setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);// 水平进度条
+                        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                         progressBar.setMax(100);
                         progressBar.setProgress(0);
                         if (!progressBar.isShowing())
@@ -204,7 +199,7 @@ public class CheckVersionSecond {
                 // TODO Auto-generated method stub
                 progressBar.dismiss();
                 Toast.makeText(mContext, "下载出错", Toast.LENGTH_SHORT).show();
-                mContext.finish();
+                ActivityController.finishAll();
             }
 
             @Override
