@@ -13,8 +13,8 @@ import xyw.com.datacollectsystem.utils.OnLocalWorkListener;
 
 public class LoginProgress {
     /**
-     * 单一职责原则，此类负责login过程，向服务器发送请求→收到请求处理，将Json解析为UserBean
-     * 包含了多个回调
+     * 通过调用requset()方法，执行login流程
+     * 将返回的Json解析为一个UserBean
      */
     private UserBean login_user;
     private Context login_activity;
@@ -23,6 +23,12 @@ public class LoginProgress {
         login_activity = context;
     }
 
+    /**
+     * 登陆流程
+     *
+     * @param username 用户名
+     * @param password 密码
+     */
     public void request(String username, String password) {
         BaseDoWorkApi<UserBean> work = new BaseDoWorkApi<>();
         work.setWorkListener(new BaseDoWorkApi.OnWorkListener<UserBean>() {

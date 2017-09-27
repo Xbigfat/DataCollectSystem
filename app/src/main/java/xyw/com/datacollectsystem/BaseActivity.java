@@ -33,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     /**
-     * 预加载，将setContentView写入init()中，基类按照顺序调用，不会出现nullpointException
+     * 基类预加载方法，将 setContentView() 写入此方法中，可正确使用
      */
     protected abstract void init();
 
@@ -48,7 +48,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void setListener();
 
     /**
-     * 设置toast 传入context 和 msg 内容
+     * 弹出短时间Toast
+     *
+     * @param context 弹出上下文
+     * @param msg     内容
      */
     public static void makeToast(Context context, String msg) {
         if (mToast == null) {
@@ -59,6 +62,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         mToast.show();
     }
 
+    /**
+     * 弹出自定义时间Toast
+     *
+     * @param context 弹出上下文
+     * @param msg     弹出内容
+     * @param time    时间长度
+     */
     public static void makeToast(Context context, String msg, int time) {
         if (mToast == null) {
             mToast = Toast.makeText(context, msg, time);

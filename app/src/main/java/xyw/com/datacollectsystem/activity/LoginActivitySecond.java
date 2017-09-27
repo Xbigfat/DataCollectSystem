@@ -25,7 +25,6 @@ public class LoginActivitySecond extends BaseActivity {
     private Button login_btn;
     private LoginActivitySecond mThis;
     private TextView change_server;
-    private CustomProgressBarDialog pd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

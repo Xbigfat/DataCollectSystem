@@ -117,6 +117,13 @@ public class CheckVersion {
         work.doWork();
     }
 
+    /**
+     * 将联网获取的version.xml文件解析为AppVersion对象
+     *
+     * @param is 获取的response
+     * @return AppVersion 版本信息对象
+     * @throws Exception
+     */
     private AppVersion getAppVersion(InputStream is) throws Exception {
         XmlPullParser parser = Xml.newPullParser();
         parser.setInput(is, "utf-8");
@@ -149,6 +156,12 @@ public class CheckVersion {
         return version;
     }
 
+    /**
+     * 更新软件版本
+     *
+     * @param url     下载的地址
+     * @param message 显示的更新说明
+     */
     public void update(final String url, String message) {
 
         new AlertDialog.Builder(mContext).setIcon(R.drawable.update)
@@ -179,6 +192,11 @@ public class CheckVersion {
                 }).show();
     }
 
+    /**
+     * 从网络下载安装
+     *
+     * @param url 文件地址
+     */
     void download(String url) {
         // 从网络下载安装包
         final String apkPath = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/datacollectsystem/" + "test.apk";
@@ -224,6 +242,11 @@ public class CheckVersion {
         download.download();
     }
 
+    /**
+     * 启动安装程序
+     *
+     * @param apkPath 下载好的文件路径
+     */
     void install(String apkPath) {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

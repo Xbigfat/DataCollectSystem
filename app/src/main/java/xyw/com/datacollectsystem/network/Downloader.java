@@ -130,7 +130,7 @@ public class Downloader {
     /**
      * 下载作业
      */
-    class downloadTask extends Thread {
+    private class downloadTask extends Thread {
         private int blockSize, downloadSizeMore;
         private int threadNum = 5;
         String urlStr, threadNo, fileName;
