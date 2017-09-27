@@ -67,6 +67,7 @@ public class EditTextWithClear extends EditText implements View.OnFocusChangeLis
         }
     }
 
+
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count,
                                   int after) { // 内容改变之前调用 (实际上内容并没有发生改变)
