@@ -1,7 +1,11 @@
 package xyw.com.datacollectsystem.network;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 
+import xyw.com.datacollectsystem.activity.MainActivity;
+import xyw.com.datacollectsystem.customviews.CustomProgressBarDialog;
 import xyw.com.datacollectsystem.entity.UserBean;
 import xyw.com.datacollectsystem.entity.workEntity;
 import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
@@ -18,6 +22,7 @@ public class LoginProgress {
      */
     private UserBean login_user;
     private Context login_activity;
+    private CustomProgressBarDialog pd;
 
     public LoginProgress(Context context) {
         login_activity = context;
@@ -35,14 +40,22 @@ public class LoginProgress {
             @Override
             public workEntity<UserBean> doWork() {
 
-                workEntity<UserBean> we = null;
+                final workEntity<UserBean> we = new workEntity<UserBean>();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        we.setResultState(workEntity.REQUEST_COMPLETED);
+                    }
+                }, 1000);
+
                 return we;
             }
         });
         work.setLocalWorkListener(new OnLocalWorkListener<UserBean>() {
             @Override
             public void onRequestCompleted(UserBean obj) {
-
+                pd.dismiss();
+                login_activity.startActivity(new Intent(login_activity, MainActivity.class));
             }
 
             @Override
@@ -62,8 +75,13 @@ public class LoginProgress {
 
             @Override
             public void onRequestLoading() {
-
+                pd = new CustomProgressBarDialog(login_activity);
+                pd.setCancelable(false);
+                pd.setMessage("正在登录");
+                pd.show();
             }
         });
+        work.doWork();
     }
+
 }

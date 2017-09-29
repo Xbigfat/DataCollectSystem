@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void init() {
+        getSupportActionBar().hide();
         setContentView(R.layout.main_2_tablerow);
     }
 

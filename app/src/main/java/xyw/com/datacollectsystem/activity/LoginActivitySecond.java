@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
-import xyw.com.datacollectsystem.customviews.CustomProgressBarDialog;
 import xyw.com.datacollectsystem.customviews.EditTextWithClear;
 import xyw.com.datacollectsystem.customviews.PasswordEditText;
 import xyw.com.datacollectsystem.network.LoginProgress;
@@ -25,6 +24,7 @@ public class LoginActivitySecond extends BaseActivity {
     private Button login_btn;
     private LoginActivitySecond mThis;
     private TextView change_server;
+    private LoginProgress login;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class LoginActivitySecond extends BaseActivity {
 
     @Override
     protected void init() {
+        getSupportActionBar().hide();
         setContentView(R.layout.login_2_design_name_pwd);
         mThis = LoginActivitySecond.this;
     }
@@ -54,7 +55,9 @@ public class LoginActivitySecond extends BaseActivity {
     private class loginBtnListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            LoginProgress login = new LoginProgress(mThis);
+            if (login == null) {
+                login = new LoginProgress(mThis);
+            }
             login.request(username_edtx.getText().toString(), pwd_edtx.getText().toString());
         }
     }
