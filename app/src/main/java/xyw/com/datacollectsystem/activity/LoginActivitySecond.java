@@ -1,10 +1,10 @@
 package xyw.com.datacollectsystem.activity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import xyw.com.datacollectsystem.BaseActivity;
@@ -20,7 +20,8 @@ import static xyw.com.datacollectsystem.utils.GlobalMethod.changeServerGlobal;
  */
 
 public class LoginActivitySecond extends BaseActivity {
-    private EditText username_edtx, pwd_edtx;
+    private EditTextWithClear username_edtx;
+    private PasswordEditText pwd_edtx;
     private Button login_btn;
     private LoginActivitySecond mThis;
     private TextView change_server;

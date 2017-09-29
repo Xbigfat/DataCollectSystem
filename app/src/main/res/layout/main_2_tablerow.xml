@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/main_background_1">
+    android:background="@drawable/main_background_1">
 
 
     <ImageView
@@ -23,7 +23,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.18"
-        app:srcCompat="@mipmap/icon_logo"
+        app:srcCompat="@drawable/icon_logo"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
@@ -54,7 +54,7 @@
 
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@mipmap/main_icon_dengji" />
+                app:srcCompat="@drawable/main_icon_dengji" />
 
 
             <TextView
@@ -90,7 +90,7 @@
                 android:id="@+id/imageView10"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@mipmap/main_icon_caiji" />
+                app:srcCompat="@drawable/main_icon_caiji" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -108,7 +108,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/textView191"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -125,7 +125,7 @@
                 android:id="@+id/imageView11"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@mipmap/main_icon_chaxun" />
+                app:srcCompat="@drawable/main_icon_chaxun" />
 
             <TextView
                 android:id="@+id/textView21"
@@ -161,7 +161,7 @@
                 android:id="@+id/imageView12"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@mipmap/main_icon_change_pwd" />
+                app:srcCompat="@drawable/main_icon_change_pwd" />
 
             <TextView
                 android:id="@+id/textView22"

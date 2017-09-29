@@ -41,17 +41,18 @@ public class EditTextWithClear extends EditText implements View.OnFocusChangeLis
         if (mClearDrawable == null) {
             mClearDrawable = getResources().getDrawable(R.drawable.edittext_clear_logo);
         }
-        mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(),
-                mClearDrawable.getIntrinsicHeight());
+        mClearDrawable.setBounds(0, 0, 70, 70);
+
         setClearIconVisible(false);
         setOnFocusChangeListener(this);
         addTextChangedListener(this);
     }
 
     private void setClearIconVisible(boolean isShowClearIcon) {
+        Drawable drawable = getResources().getDrawable(R.drawable.login_custom_account);
+        drawable.setBounds(0, 0, 100, 100);
         Drawable locationRight = isShowClearIcon ? mClearDrawable : null;
-        setCompoundDrawablesRelative(getCompoundDrawablesRelative()[0],
-                getCompoundDrawablesRelative()[1], locationRight,
+        setCompoundDrawablesRelative(drawable, getCompoundDrawablesRelative()[1], locationRight,
                 getCompoundDrawablesRelative()[3]);
 
     }

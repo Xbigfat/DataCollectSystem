@@ -34,7 +34,7 @@
         <activity
             android:name=".activity.VehicleDataRegister"
             android:label="报废信息登记"
-            android:logo="@mipmap/main_icon_caiji" />
+            android:logo="@drawable/main_icon_caiji" />
 
 
     </application>

@@ -27,7 +27,6 @@ public class PasswordEditText extends EditText {
     private int mHidePwdIcon = R.drawable.ic_visibility_off_24dp;
     private boolean mIsShowPwdIcon; // 是否显示指示器
     private Drawable mDrawableSide; // 显示隐藏指示器
-    private Drawable drawableStart; // 显示隐藏指示器
     private int dimension; // 文字与图形的长度
 
     public PasswordEditText(Context context) {
@@ -51,22 +50,14 @@ public class PasswordEditText extends EditText {
 
     public void initFields(AttributeSet attrs, TypedArray styles) {
         if (attrs != null) {
-            try {
-                // 根据参数, 设置 Icon
-                mShowPwdIcon = styles.getResourceId(R.styleable.PasswordEditText_pet_iconShow, mShowPwdIcon);
-                mHidePwdIcon = styles.getResourceId(R.styleable.PasswordEditText_pet_iconHide, mHidePwdIcon);
-            } finally {
-//                styles.recycle();
-            }
-
-//            Drawable d  = this.getCompoundDrawablesRelative()[0];
-
-            Drawable d = styles.getDrawable(R.styleable.PasswordEditText_start);
+            mShowPwdIcon = styles.getResourceId(R.styleable.PasswordEditText_pet_iconShow, mShowPwdIcon);
+            mHidePwdIcon = styles.getResourceId(R.styleable.PasswordEditText_pet_iconHide, mHidePwdIcon);
+           /* Drawable d = styles.getDrawable(R.styleable.PasswordEditText_start);
             if (d != null) {
                 drawableStart = d;
             } else {
                 throw new RuntimeException(" 图像资源为空 ");
-            }
+            }*/
 
             dimension = styles.getDimensionPixelSize(R.styleable.PasswordEditText_pad, 60);
         }
@@ -84,12 +75,9 @@ public class PasswordEditText extends EditText {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 0) {
-                    // 有文字时显示指示器
-                    //                    showPasswordVisibilityIndicator(true);
                 } else {
                     mIsShowPwdIcon = false;
                     restorePasswordIconVisibility(mIsShowPwdIcon);
-//                    showPasswordVisibilityIndicator(false); // 隐藏指示器
                 }
             }
 
@@ -148,20 +136,18 @@ public class PasswordEditText extends EditText {
 
     // 显示密码提示标志
     private void showPasswordVisibilityIndicator(boolean shouldShowIcon) {
+        Drawable drawablestart = getResources().getDrawable(R.drawable.login_custom_password);
+        drawablestart.setBounds(0, 0, 100, 100);
         if (shouldShowIcon) {
             Drawable drawable = mIsShowPwdIcon ?
                     ContextCompat.getDrawable(getContext(), mHidePwdIcon) :
                     ContextCompat.getDrawable(getContext(), mShowPwdIcon);
-
-            // 在最右侧显示图像
-            setCompoundDrawablesWithIntrinsicBounds(drawableStart, null, drawable, null);
-
+            drawable.setBounds(0, 0, 70, 70);
+            setCompoundDrawablesRelative(drawablestart, null, drawable, null);
             setCompoundDrawablePadding(dimension);
-
             mDrawableSide = drawable;
         } else {
-            // 不显示周边的图像
-            setCompoundDrawables(drawableStart, null, null, null);
+            setCompoundDrawablesRelative(drawablestart, null, null, null);
             mDrawableSide = null;
         }
     }

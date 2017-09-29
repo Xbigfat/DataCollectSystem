@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/login_background_default">
+    android:background="@drawable/login_background_default">
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,7 +21,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.18"
-        app:srcCompat="@mipmap/icon_logo" />
+        app:srcCompat="@drawable/icon_logo" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -54,7 +54,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.22"
-                app:srcCompat="@mipmap/main_icon_dengji" />
+                app:srcCompat="@drawable/main_icon_dengji" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -92,7 +92,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.16"
-                app:srcCompat="@mipmap/main_icon_caiji" />
+                app:srcCompat="@drawable/main_icon_caiji" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -132,7 +132,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.08"
-                app:srcCompat="@mipmap/main_icon_chaxun" />
+                app:srcCompat="@drawable/main_icon_chaxun" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -170,7 +170,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.12"
-                app:srcCompat="@mipmap/main_icon_change_pwd" />
+                app:srcCompat="@drawable/main_icon_change_pwd" />
 
             <TextView
                 android:id="@+id/textView15"

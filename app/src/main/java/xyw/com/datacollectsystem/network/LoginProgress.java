@@ -2,7 +2,6 @@ package xyw.com.datacollectsystem.network;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 
 import xyw.com.datacollectsystem.activity.MainActivity;
 import xyw.com.datacollectsystem.customviews.CustomProgressBarDialog;
@@ -40,14 +39,8 @@ public class LoginProgress {
             @Override
             public workEntity<UserBean> doWork() {
 
-                final workEntity<UserBean> we = new workEntity<UserBean>();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        we.setResultState(workEntity.REQUEST_COMPLETED);
-                    }
-                }, 1000);
-
+                workEntity<UserBean> we = new workEntity<UserBean>();
+                we.setResultState(workEntity.REQUEST_COMPLETED);
                 return we;
             }
         });

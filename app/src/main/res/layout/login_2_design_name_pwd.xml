@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/login_background_default">
+    android:background="@drawable/login_background_default">
 
     <ImageView
         android:id="@+id/imageView13"
@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
-        app:srcCompat="@mipmap/icon_logo"
+        app:srcCompat="@drawable/icon_logo"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 
@@ -29,7 +29,7 @@
         android:background="@drawable/login_edit_style"
         android:digits="1234567890qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"
         android:drawablePadding="20dp"
-        android:drawableStart="@mipmap/login_custom_account"
+        android:drawableStart="@drawable/login_custom_account"
         android:hint="账号"
         android:paddingLeft="20dp"
         android:paddingRight="10dp"
@@ -48,6 +48,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/login_edit_style"
+        android:drawableStart="@drawable/login_custom_password"
         android:hint="密码"
         android:inputType="textPassword"
         android:maxLines="1"
@@ -59,8 +60,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_2_username"
-        app:pad="20dp"
-        app:start="@mipmap/login_custom_password" />
+        app:pad="20dp" />
 
     <TextView
         android:id="@+id/login_2_change_server"
