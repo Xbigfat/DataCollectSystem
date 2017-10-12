@@ -1,7 +1,6 @@
 package xyw.com.datacollectsystem.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.WindowManager;
 
@@ -19,13 +18,8 @@ public class Splash extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                CheckVersion checkVersion = new CheckVersion(mThis);
-                checkVersion.request();
-            }
-        }, 1000);
+        CheckVersion checkVersion = new CheckVersion(mThis);
+        checkVersion.request();
     }
 
     @Override

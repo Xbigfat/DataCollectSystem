@@ -33,7 +33,7 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".activity.VehicleDataRegister"
-            android:label="报废信息登记"
+            android:label="报废车辆登记"
             android:logo="@drawable/main_icon_caiji" />
 
 
