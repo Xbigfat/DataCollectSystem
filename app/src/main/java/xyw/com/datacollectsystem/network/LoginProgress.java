@@ -3,12 +3,19 @@ package xyw.com.datacollectsystem.network;
 import android.content.Context;
 import android.content.Intent;
 
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import xyw.com.datacollectsystem.activity.MainActivity;
 import xyw.com.datacollectsystem.customviews.CustomProgressBarDialog;
+import xyw.com.datacollectsystem.entity.ServiceObj;
 import xyw.com.datacollectsystem.entity.UserBean;
 import xyw.com.datacollectsystem.entity.workEntity;
 import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
 import xyw.com.datacollectsystem.utils.OnLocalWorkListener;
+import xyw.com.datacollectsystem.utils.SoapActionApi;
 
 /**
  * Created by 31429 on 2017/9/19.
@@ -33,14 +40,24 @@ public class LoginProgress {
      * @param username 用户名
      * @param password 密码
      */
-    public void request(String username, String password) {
+    public void request(final String username, final String password) {
         BaseDoWorkApi<UserBean> work = new BaseDoWorkApi<>();
         work.setWorkListener(new BaseDoWorkApi.OnWorkListener<UserBean>() {
             @Override
             public workEntity<UserBean> doWork() {
-
-                workEntity<UserBean> we = new workEntity<UserBean>();
-                we.setResultState(workEntity.REQUEST_COMPLETED);
+                ServiceObj obj = new ServiceObj();
+                Gson g = new Gson();
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("YHDH", username);
+                map.put("MM", password);
+                map.put("SBXH", "");
+                map.put("SBDH", "");
+                map.put("BZ", "");
+                String sendData = g.toJson(map);
+                obj.functionId = "";
+                obj.curFzjg = "";
+                obj.sendData = sendData;
+                SoapActionApi api = new SoapActionApi(login_activity,obj,2)
                 return we;
             }
         });
