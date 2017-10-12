@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -40,29 +41,27 @@ public class GlobalMethod {
     public static void changeServerGlobal(final Context context) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         final View serverDialog = layoutInflater.inflate(R.layout.login_change_server_dialog, null);
-        final SharedPreferences serverIp = context.getSharedPreferences("serverIP", MODE_PRIVATE);
+        final SharedPreferences serviceip = context.getSharedPreferences("ip", MODE_PRIVATE);
         final EditText setIp = (EditText) serverDialog.findViewById(R.id.dialog_server_adress);
         final EditText setPort = (EditText) serverDialog.findViewById(R.id.dialog_server_port);
         final EditText setMethod = (EditText) serverDialog.findViewById(R.id.dialog_method_name);
 
 
-        if (serverIp == null) {
-            setIp.setText(Constant.server_address);
-            setPort.setText(Constant.server_port);
-            setMethod.setText(Constant.server_methodName);
+        if (serviceip == null) {
+            setIp.setText(ServiceConstant.IP);//serviceip.getString("ip", "172.172.0.20")
+            setPort.setText(ServiceConstant.PORT);//serviceip.getString("port", "8082")
+            setMethod.setText(ServiceConstant.SSERVICE);
         } else {
-            if (!serverIp.contains("ip") || !serverIp.contains("port") || !serverIp.contains("method")) {
-                setIp.setText(Constant.server_address);
-                setPort.setText(Constant.server_port);
-                setMethod.setText(Constant.server_methodName);
+            if (!serviceip.contains("ip") || !serviceip.contains("port") || !serviceip.contains("service")) {
+                setIp.setText(ServiceConstant.IP);//serviceip.getString("ip", "172.172.0.20")
+                setPort.setText(ServiceConstant.PORT);//serviceip.getString("port", "8082")
+                setMethod.setText(ServiceConstant.SSERVICE);
             } else {
-                setIp.setText(serverIp.getString("ip", Constant.server_address));
-                setPort.setText(serverIp.getString("port", Constant.server_port));
-                setMethod.setText(serverIp.getString("method", Constant.server_methodName));
+                setIp.setText(serviceip.getString("ip", ServiceConstant.IP));//serviceip.getString("ip", "172.172.0.20")
+                setPort.setText(serviceip.getString("port", ServiceConstant.PORT));//serviceip.getString("port", "8082")
+                setMethod.setText(serviceip.getString("service", ServiceConstant.SSERVICE));
             }
         }
-
-
         final AlertDialog alertDialog = new AlertDialog.Builder(context)
                 .setView(serverDialog)
                 .setPositiveButton("确定", null)
@@ -88,7 +87,7 @@ public class GlobalMethod {
                     return;
                 }
                 try {
-                    SharedPreferences.Editor editor = serverIp.edit();
+                    SharedPreferences.Editor editor = serviceip.edit();
                     editor.putString("ip", ip);
                     editor.putString("port", port);
                     editor.putString("method", method);
@@ -115,5 +114,10 @@ public class GlobalMethod {
             return (mNetworkInfo != null && mNetworkInfo.isAvailable());
         }
         return false;
+    }
+
+    public static String getDeviceId(Context cxt) {
+        TelephonyManager tm = (TelephonyManager) cxt.getSystemService(Context.TELEPHONY_SERVICE);
+        return tm.getDeviceId();
     }
 }

@@ -40,7 +40,6 @@ public class SoapActionApi {
     protected SoapObject request = null;
 
 
-
     //	private final String NameSpace = "http://tempuri.org/";
     private final int TIMEOUT = 30 * 1000;
     protected Context mContext;
@@ -53,21 +52,21 @@ public class SoapActionApi {
 
     private String url;
 
-    public SoapActionApi(Context context, ServiceObj obj,int choose) {
+    public SoapActionApi(Context context, ServiceObj obj, int choose) {
         this.mContext = context;
         this.sObj = obj;
         this.readOrWrite = choose;
-        SharedPreferences serviceip = context.getSharedPreferences("serviceip", Activity.MODE_PRIVATE);
-        if(serviceip==null){
+        SharedPreferences serviceip = context.getSharedPreferences("ip", Activity.MODE_PRIVATE);
+        if (serviceip == null) {
             url = ServiceConstant.SADDRESS;
-        }else{
-            if(!serviceip.contains("ip")||!serviceip.contains("port")||!serviceip.contains("service")){
+        } else {
+            if (!serviceip.contains("ip") || !serviceip.contains("port") || !serviceip.contains("service")) {
                 url = ServiceConstant.SADDRESS;
-            }else{
-                url = "http://" + serviceip.getString("ip",ServiceConstant.IP)+":"
-                        +serviceip.getString("port", ServiceConstant.PORT)+"/"
-                        +serviceip.getString("service", ServiceConstant.SSERVICE)
-                        +ServiceConstant.SPATH;
+            } else {
+                url = "http://" + serviceip.getString("ip", ServiceConstant.IP) + ":"
+                        + serviceip.getString("port", ServiceConstant.PORT) + "/"
+                        + serviceip.getString("service", ServiceConstant.SSERVICE)
+                        + ServiceConstant.SPATH;
             }
         }
 
@@ -76,6 +75,7 @@ public class SoapActionApi {
 
     /**
      * 发送请求
+     *
      * @param <T>
      */
     public <T> workEntity<T> request(Type type) {
@@ -96,19 +96,19 @@ public class SoapActionApi {
             }
 */
 
-            if(readOrWrite==ServiceConstant.WRITE){
+            if (readOrWrite == ServiceConstant.WRITE) {
 
                 methodName = ServiceConstant.WRITEDATA;
 
                 doc = ServiceConstant.WRITEDOC;
-            }else if (readOrWrite == ServiceConstant.READ){
+            } else if (readOrWrite == ServiceConstant.READ) {
 
                 methodName = ServiceConstant.QUERYDATA;
 
                 doc = ServiceConstant.QUERYDOC;
             }
-            request = new SoapObject(ServiceConstant.NAMESPACE+"/", methodName);
-            request.addProperty(ServiceConstant.SN,ServiceConstant.SN_MOBILEAPP);
+            request = new SoapObject(ServiceConstant.NAMESPACE + "/", methodName);
+            request.addProperty(ServiceConstant.SN, ServiceConstant.SN_MOBILEAPP);
             request.addProperty(ServiceConstant.JKID, sObj.functionId);
             String s = sObj.sendData;
             try {
@@ -118,11 +118,11 @@ public class SoapActionApi {
                 if (Parameters.DEBUG)
                     e.printStackTrace();
             }
-            request.addProperty(doc,s);
+            request.addProperty(doc, s);
 
             // soapheader在这里
             Element[] header = new Element[1];
-            header[0] = new Element().createElement(ServiceConstant.NAMESPACE +"/",
+            header[0] = new Element().createElement(ServiceConstant.NAMESPACE + "/",
                     "header");
             header[0].addChild(Node.TEXT, "");
 
@@ -134,11 +134,11 @@ public class SoapActionApi {
             envelope.setOutputSoapObject(request);
             HttpTransportSE ht = new HttpTransportSE(url, TIMEOUT);
             try {
-                if(Parameters.DEBUG)ht.debug = true;
+                if (Parameters.DEBUG) ht.debug = true;
                 ht.call(ServiceConstant.NAMESPACE + "/" + ServiceConstant.SNAME + methodName, envelope);
-                if(Parameters.DEBUG)Log.i("", ht.responseDump);// i = TIMEOUT_COUNT;
+                if (Parameters.DEBUG) Log.i("", ht.responseDump);// i = TIMEOUT_COUNT;
             } catch (Exception e) {
-                if(Parameters.DEBUG){
+                if (Parameters.DEBUG) {
                     e.printStackTrace();
                 }
                 work.setResultState(REQUEST_ERROR);
@@ -146,7 +146,7 @@ public class SoapActionApi {
                 return work;
             }
             sObj.resultData = envelope.getResponse().toString();
-            if(sObj.resultData.trim().equals("anyType{}")){
+            if (sObj.resultData.trim().equals("anyType{}")) {
                 work.setResultState(REQUEST_ERROR);
                 work.setException(new Exception("网络连接错误！"));
                 return work;
@@ -159,7 +159,7 @@ public class SoapActionApi {
                 if (Parameters.DEBUG)
                     e.printStackTrace();
             }
-            if(Parameters.DEBUG)Log.i("", result);
+            if (Parameters.DEBUG) Log.i("", result);
             Gson g = new Gson();
             work.setResultState(REQUEST_COMPLETED);
             T t = g.fromJson(result, type);
@@ -168,7 +168,7 @@ public class SoapActionApi {
 
 
         } catch (Exception e) {// 请求出错开始-----------------------------------------------------------------------------
-            if(Parameters.DEBUG)
+            if (Parameters.DEBUG)
                 e.printStackTrace();
             work.setResultState(REQUEST_ERROR);
             work.setException(e);

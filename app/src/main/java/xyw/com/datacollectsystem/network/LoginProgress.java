@@ -14,14 +14,18 @@ import xyw.com.datacollectsystem.entity.ServiceObj;
 import xyw.com.datacollectsystem.entity.UserBean;
 import xyw.com.datacollectsystem.entity.workEntity;
 import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
+import xyw.com.datacollectsystem.utils.GlobalMethod;
 import xyw.com.datacollectsystem.utils.OnLocalWorkListener;
-import xyw.com.datacollectsystem.utils.SoapActionApi;
 
 /**
  * Created by 31429 on 2017/9/19.
  */
 
 public class LoginProgress {
+
+    /**
+     * 暂时不再使用
+     */
     /**
      * 通过调用requset()方法，执行login流程
      * 将返回的Json解析为一个UserBean
@@ -50,15 +54,14 @@ public class LoginProgress {
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("YHDH", username);
                 map.put("MM", password);
-                map.put("SBXH", "");
+                map.put("SBXH","");
                 map.put("SBDH", "");
                 map.put("BZ", "");
                 String sendData = g.toJson(map);
                 obj.functionId = "";
                 obj.curFzjg = "";
                 obj.sendData = sendData;
-                SoapActionApi api = new SoapActionApi(login_activity,obj,2)
-                return we;
+                return null;
             }
         });
         work.setLocalWorkListener(new OnLocalWorkListener<UserBean>() {

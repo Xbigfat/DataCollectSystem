@@ -13,8 +13,8 @@ public class ServiceConstant {
 
     public static String SNAME = "IvirDataService/";
     public static final String SN = "sn";
-    public static String IP = "60.166.5.118";
-    public static String PORT = "8087";
+    public static String IP = "192.168.0.248";
+    public static String PORT = "80";
     public static String SPATH = "/virDataService.svc";
     public static String SSERVICE = "virWeb";
     public static String SADDRESS = "http://" + IP + ":" + PORT + SPATH;

@@ -25,9 +25,10 @@ import xyw.com.datacollectsystem.entity.AppVersion;
 import xyw.com.datacollectsystem.entity.workEntity;
 import xyw.com.datacollectsystem.utils.ActivityController;
 import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
-import xyw.com.datacollectsystem.utils.Constant;
 import xyw.com.datacollectsystem.utils.OnDownloadListener;
 import xyw.com.datacollectsystem.utils.OnLocalWorkListener;
+import xyw.com.datacollectsystem.utils.Parameters;
+import xyw.com.datacollectsystem.utils.ServiceConstant;
 
 import static android.content.Context.MODE_PRIVATE;
 import static xyw.com.datacollectsystem.BaseActivity.makeToast;
@@ -56,13 +57,18 @@ public class CheckVersion {
                 try {
                     String path = mContext.getResources().getString(R.string.serverurl);
                     String url;
-                    SharedPreferences ip = mContext.getSharedPreferences("serverIP", MODE_PRIVATE);
-                    if (ip == null) {
-                        url = "http://" + Constant.server_address + ":" + Constant.server_port + "/" + Constant.server_methodName;
+                    SharedPreferences serviceip = mContext.getSharedPreferences("ip", MODE_PRIVATE);
+                    if (serviceip == null) {
+                        url = ServiceConstant.SADDRESS;
                     } else {
-                        url = "http://" + ip.getString("ip", Constant.server_address) + ":"
-                                + ip.getString("port", Constant.server_port) + "/"
-                                + ip.getString("service", Constant.server_methodName);
+                        if (!serviceip.contains("ip") || !serviceip.contains("port") || !serviceip.contains("service")) {
+                            url = ServiceConstant.SADDRESS;
+                        } else {
+                            url = "http://" + serviceip.getString("ip", ServiceConstant.IP) + ":"
+                                    + serviceip.getString("port", ServiceConstant.PORT) + "/"
+                                    + serviceip.getString("service", ServiceConstant.SSERVICE)
+                                    + ServiceConstant.SPATH;
+                        }
                     }
                     URL updateUrl = new URL(url + path);
                     HttpURLConnection conn = (HttpURLConnection) updateUrl.openConnection();
@@ -128,13 +134,18 @@ public class CheckVersion {
         XmlPullParser parser = Xml.newPullParser();
         parser.setInput(is, "utf-8");
         String url;
-        SharedPreferences ip = mContext.getSharedPreferences("serverIP", MODE_PRIVATE);
-        if (ip == null) {
-            url = "http://" + Constant.server_address + ":" + Constant.server_port + "/" + Constant.server_methodName;
+        SharedPreferences serviceip = mContext.getSharedPreferences("ip", MODE_PRIVATE);
+        if (serviceip == null) {
+            url = ServiceConstant.SADDRESS;
         } else {
-            url = "http://" + ip.getString("ip", Constant.server_address) + ":"
-                    + ip.getString("port", Constant.server_port) + "/"
-                    + ip.getString("service", Constant.server_methodName);
+            if (!serviceip.contains("ip") || !serviceip.contains("port") || !serviceip.contains("service")) {
+                url = ServiceConstant.SADDRESS;
+            } else {
+                url = "http://" + serviceip.getString("ip", ServiceConstant.IP) + ":"
+                        + serviceip.getString("port", ServiceConstant.PORT) + "/"
+                        + serviceip.getString("service", ServiceConstant.SSERVICE)
+                        + ServiceConstant.SPATH;
+            }
         }
         int type = parser.getEventType();
         while (type != XmlPullParser.END_DOCUMENT) {
