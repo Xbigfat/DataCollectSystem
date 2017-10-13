@@ -13,11 +13,18 @@ public class ServiceConstant {
 
     public static String SNAME = "IvirDataService/";
     public static final String SN = "sn";
+    //服务器ip地址
     public static String IP = "192.168.0.248";
+    //服务器port
     public static String PORT = "80";
+    //服务 svc 文件
     public static String SPATH = "/virDataService.svc";
+    //服务路径
     public static String SSERVICE = "virWeb";
+    //组合的地址，可用来查询 version 信息
+    //default saddress = "http://192.168.0.248:80/virWeb"
     public static String SADDRESS = "http://" + IP + ":" + PORT + SPATH;
+
     public static final String JKID = "jkid";
     public static final String KEY = "KEY";
     public static final String TITLE = "TITLE";

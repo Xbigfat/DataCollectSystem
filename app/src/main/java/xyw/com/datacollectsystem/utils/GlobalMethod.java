@@ -44,22 +44,20 @@ public class GlobalMethod {
         final SharedPreferences serviceip = context.getSharedPreferences("ip", MODE_PRIVATE);
         final EditText setIp = (EditText) serverDialog.findViewById(R.id.dialog_server_adress);
         final EditText setPort = (EditText) serverDialog.findViewById(R.id.dialog_server_port);
-        final EditText setMethod = (EditText) serverDialog.findViewById(R.id.dialog_method_name);
-
-
+        final EditText setService = (EditText) serverDialog.findViewById(R.id.dialog_method_name);
         if (serviceip == null) {
             setIp.setText(ServiceConstant.IP);//serviceip.getString("ip", "172.172.0.20")
             setPort.setText(ServiceConstant.PORT);//serviceip.getString("port", "8082")
-            setMethod.setText(ServiceConstant.SSERVICE);
+            setService.setText(ServiceConstant.SSERVICE);
         } else {
             if (!serviceip.contains("ip") || !serviceip.contains("port") || !serviceip.contains("service")) {
                 setIp.setText(ServiceConstant.IP);//serviceip.getString("ip", "172.172.0.20")
                 setPort.setText(ServiceConstant.PORT);//serviceip.getString("port", "8082")
-                setMethod.setText(ServiceConstant.SSERVICE);
+                setService.setText(ServiceConstant.SSERVICE);
             } else {
                 setIp.setText(serviceip.getString("ip", ServiceConstant.IP));//serviceip.getString("ip", "172.172.0.20")
                 setPort.setText(serviceip.getString("port", ServiceConstant.PORT));//serviceip.getString("port", "8082")
-                setMethod.setText(serviceip.getString("service", ServiceConstant.SSERVICE));
+                setService.setText(serviceip.getString("service", ServiceConstant.SSERVICE));
             }
         }
         final AlertDialog alertDialog = new AlertDialog.Builder(context)
@@ -77,12 +75,12 @@ public class GlobalMethod {
             public void onClick(View v) {
                 String ip = setIp.getText().toString().trim();
                 String port = setPort.getText().toString().trim();
-                String method = setMethod.getText().toString().trim();
+                String service = setService.getText().toString().trim();
                 if (!isIPv4Address(ip)) {
                     makeToast(context, "IP地址不合法！");
                     return;
                 }
-                if (port.equals("") || method.equals("")) {
+                if (port.equals("") || service.equals("")) {
                     makeToast(context, "配置出错，请检查！");
                     return;
                 }
@@ -90,14 +88,14 @@ public class GlobalMethod {
                     SharedPreferences.Editor editor = serviceip.edit();
                     editor.putString("ip", ip);
                     editor.putString("port", port);
-                    editor.putString("method", method);
+                    editor.putString("service", service);
                     editor.commit();
                 } catch (Exception e) {
                     makeToast(context, e.getMessage(), Toast.LENGTH_LONG);
                 } finally {
                     alertDialog.dismiss();
                 }
-                makeToast(context, "服务器地址成功更改为：\n http://" + ip + "/" + port + "/" + method, Toast.LENGTH_LONG);
+                makeToast(context, "服务器地址成功更改为：\n http://" + ip + ":" + port + "/" + service, Toast.LENGTH_LONG);
             }
         });
     }

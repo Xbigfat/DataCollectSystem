@@ -1,8 +1,10 @@
 package xyw.com.datacollectsystem.utils;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Toast;
 
 import xyw.com.datacollectsystem.entity.workEntity;
 
@@ -49,9 +51,9 @@ public class BaseDoWorkApi<T> {
             if (localWorkListener != null) {
                 localWorkListener.onRequestError(null, e);
             }
-
             return;
         }
+
         backGroundThread thread = new backGroundThread();
         thread.setName("doWork");
         thread.start();

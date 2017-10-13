@@ -27,7 +27,6 @@ import xyw.com.datacollectsystem.utils.ActivityController;
 import xyw.com.datacollectsystem.utils.BaseDoWorkApi;
 import xyw.com.datacollectsystem.utils.OnDownloadListener;
 import xyw.com.datacollectsystem.utils.OnLocalWorkListener;
-import xyw.com.datacollectsystem.utils.Parameters;
 import xyw.com.datacollectsystem.utils.ServiceConstant;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -59,15 +58,14 @@ public class CheckVersion {
                     String url;
                     SharedPreferences serviceip = mContext.getSharedPreferences("ip", MODE_PRIVATE);
                     if (serviceip == null) {
-                        url = ServiceConstant.SADDRESS;
+                        url = "http://" + ServiceConstant.IP + ":" + ServiceConstant.PORT + "/" + ServiceConstant.SSERVICE;
                     } else {
                         if (!serviceip.contains("ip") || !serviceip.contains("port") || !serviceip.contains("service")) {
-                            url = ServiceConstant.SADDRESS;
+                            url = "http://" + ServiceConstant.IP + ":" + ServiceConstant.PORT + "/" + ServiceConstant.SSERVICE;
                         } else {
                             url = "http://" + serviceip.getString("ip", ServiceConstant.IP) + ":"
                                     + serviceip.getString("port", ServiceConstant.PORT) + "/"
-                                    + serviceip.getString("service", ServiceConstant.SSERVICE)
-                                    + ServiceConstant.SPATH;
+                                    + serviceip.getString("service", ServiceConstant.SSERVICE);
                         }
                     }
                     URL updateUrl = new URL(url + path);
@@ -91,6 +89,7 @@ public class CheckVersion {
                 if (!getCurrentVersion().equals(obj.getVersion())) {
                     update(obj.getUrl(), obj.getDescription());
                 } else {
+                    makeToast(mContext, "已经是最新版本");
                     Intent intent = new Intent(mContext, LoginActivitySecond.class);
                     mContext.startActivity(intent);
                     mContext.finish();
@@ -104,7 +103,8 @@ public class CheckVersion {
 
             @Override
             public void onRequestError(AppVersion obj, Exception e) {
-                makeToast(mContext, e.getMessage());
+                makeToast(mContext, "版本更新检查失败");
+                e.printStackTrace();
                 Intent intent = new Intent(mContext, LoginActivitySecond.class);
                 mContext.startActivity(intent);
                 mContext.finish();
@@ -117,7 +117,6 @@ public class CheckVersion {
 
             @Override
             public void onRequestLoading() {
-
             }
         });
         work.doWork();
@@ -283,4 +282,5 @@ public class CheckVersion {
             return "-1";
         }
     }
+
 }

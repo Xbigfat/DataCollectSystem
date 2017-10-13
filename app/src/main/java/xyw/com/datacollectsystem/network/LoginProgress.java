@@ -94,7 +94,7 @@ public class LoginProgress {
                 pd.show();
             }
         });
-        work.doWork();
+       // work.doWork();
     }
 
 }
