@@ -114,8 +114,26 @@ public class GlobalMethod {
         return false;
     }
 
-    public static String getDeviceId(Context cxt) {
+    public static String getDeviceInfo(Context cxt) {
         TelephonyManager tm = (TelephonyManager) cxt.getSystemService(Context.TELEPHONY_SERVICE);
-        return tm.getDeviceId();
+        String str = "";
+        str += "DeviceId(IMEI) = " + tm.getDeviceId() + "\n";
+        str += "DeviceSoftwareVersion = " + tm.getDeviceSoftwareVersion()
+                + "\n";
+        str += "Line1Number = " + tm.getLine1Number() + "\n";
+        str += "NetworkCountryIso = " + tm.getNetworkCountryIso() + "\n";
+        str += "NetworkOperator = " + tm.getNetworkOperator() + "\n";
+        str += "NetworkOperatorName = " + tm.getNetworkOperatorName() + "\n";
+        str += "NetworkType = " + tm.getNetworkType() + "\n";
+        str += "PhoneType = " + tm.getPhoneType() + "\n";
+        str += "SimCountryIso = " + tm.getSimCountryIso() + "\n";
+        str += "SimOperator = " + tm.getSimOperator() + "\n";
+        str += "SimOperatorName = " + tm.getSimOperatorName() + "\n";
+        str += "SimSerialNumber = " + tm.getSimSerialNumber() + "\n";
+        str += "SimState = " + tm.getSimState() + "\n";
+        str += "SubscriberId(IMSI) = " + tm.getSubscriberId() + "\n";
+        str += "VoiceMailNumber = " + tm.getVoiceMailNumber() + "\n";
+        str += "OSModel = " + android.os.Build.MODEL + "\n";
+        return str;
     }
 }

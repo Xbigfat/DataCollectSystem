@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/i"
         android:layout_width="240dp"
         android:layout_height="180dp"
         android:layout_marginBottom="8dp"
@@ -18,11 +18,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18"
+        app:layout_constraintVertical_bias="0.14999998"
         app:srcCompat="@drawable/icon_logo"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -30,15 +30,14 @@
 
     <TableLayout
         android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:stretchColumns="0,3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8">
+        app:layout_constraintTop_toBottomOf="@+id/i"
+        android:id="@+id/tableLayout">
 
         <TableRow
             android:id="@+id/main_register_tr"
@@ -50,7 +49,6 @@
             <TextView />
 
             <ImageView
-                android:id="@+id/imageView9"
 
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -58,7 +56,6 @@
 
 
             <TextView
-                android:id="@+id/textView17"
                 android:gravity="center"
                 android:text="报废车辆登记"
                 android:textColor="@android:color/background_dark"
@@ -73,7 +70,6 @@
             android:layout_height="30dp">
 
             <TextView
-                android:id="@+id/textView99"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -87,13 +83,11 @@
             <TextView />
 
             <ImageView
-                android:id="@+id/imageView10"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/main_icon_caiji" />
 
             <TextView
-                android:id="@+id/textView20"
                 android:layout_gravity="center"
                 android:text="报废过程信息采集"
                 android:textColor="@android:color/background_dark"
@@ -108,7 +102,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView191"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -122,13 +115,11 @@
             <TextView />
 
             <ImageView
-                android:id="@+id/imageView11"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/main_icon_chaxun" />
 
             <TextView
-                android:id="@+id/textView21"
                 android:layout_gravity="center"
                 android:text="报废记录查询"
                 android:textColor="@android:color/background_dark"
@@ -144,7 +135,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
@@ -158,20 +148,45 @@
             <TextView />
 
             <ImageView
-                android:id="@+id/imageView12"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/main_icon_change_pwd" />
 
             <TextView
-                android:id="@+id/textView22"
                 android:layout_gravity="center"
                 android:text="密码管理"
                 android:textColor="@android:color/background_dark"
                 android:textSize="25sp" />
 
             <TextView />
+
+            <TextView />
+
         </TableRow>
     </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:text="当前登陆用户："
+        android:textSize="24sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        android:id="@+id/textView20"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.25" />
+
+    <TextView
+        android:id="@+id/main_current_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView20"
+        app:layout_constraintLeft_toRightOf="@+id/textView20" />
 
 </android.support.constraint.ConstraintLayout>

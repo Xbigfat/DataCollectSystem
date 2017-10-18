@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import xyw.com.datacollectsystem.BaseActivity;
 import xyw.com.datacollectsystem.R;
@@ -15,11 +16,12 @@ import xyw.com.datacollectsystem.R;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     TableRow register, collect, query, pwd_change;
-
+    TextView current_user;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        current_user.setText(getBaseApplication().getUser().getXm());
     }
 
     @Override
@@ -34,6 +36,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         collect = (TableRow) findViewById(R.id.main_collect_tr);
         query = (TableRow) findViewById(R.id.main_query_tr);
         pwd_change = (TableRow) findViewById(R.id.main_pwd_change_tr);
+        current_user = (TextView) findViewById(R.id.main_current_tv);
     }
 
     @Override

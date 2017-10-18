@@ -32,6 +32,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityController.removeActivity(this);
     }
 
+    protected BaseApplication mApplication;
+
+    public BaseApplication getBaseApplication() {
+        return (BaseApplication) getApplication();
+    }
 
     /**
      * 基类预加载方法，将 setContentView() 写入此方法中，可正确使用
