@@ -19,8 +19,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityController.addActivity(this);
-        //不在baseActivity中隐藏ActionBar 部分Activity需要ActionBar支持
-        //getSupportActionBar().hide();
         init();
         findViewsByID();
         setListener();

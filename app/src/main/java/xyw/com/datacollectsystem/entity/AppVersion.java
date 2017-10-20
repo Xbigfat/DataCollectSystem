@@ -5,6 +5,9 @@ package xyw.com.datacollectsystem.entity;
  */
 
 public class AppVersion {
+    /**
+     * 检查软件更新时的实体对象
+     */
     private String version = null;
     private String url = null;
     private String description = null;

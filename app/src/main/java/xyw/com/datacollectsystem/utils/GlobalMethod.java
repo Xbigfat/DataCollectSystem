@@ -25,18 +25,23 @@ import static xyw.com.datacollectsystem.BaseActivity.makeToast;
 
 public class GlobalMethod {
 
-    /**
-     * isIPv4Address() 方法验证传入的字符串是否为合法的 IPv4 地址
-     */
     private static final Pattern IPV4_PATTERN = Pattern.compile("^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
 
+    /**
+     * 正则表达式判断是否是合法的IPv4地址
+     *
+     * @param input 传入的地址信息
+     * @return 合法返回 true
+     */
     public static boolean isIPv4Address(final String input) {
         return IPV4_PATTERN.matcher(input).matches();
     }
 
 
     /**
-     * changeServerGlobal() 方法全局修改服务器配置信息，传入Context即可
+     * 全局修改系统服务的地址信息
+     *
+     * @param context 修改的上下文位置
      */
     public static void changeServerGlobal(final Context context) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -95,14 +100,18 @@ public class GlobalMethod {
                 } finally {
                     alertDialog.dismiss();
                 }
-                makeToast(context, "服务器地址成功更改为：\n http://" + ip + ":" + port + "/" + service, Toast.LENGTH_LONG);
+                makeToast(context, "服务器地址成功更改为：\n http://" + ip + ":" + port + "/" + service + "\n请重新打开应用", Toast.LENGTH_LONG);
+                ActivityController.finishAll();
             }
         });
     }
 
 
     /**
-     * validateNetworkState() 判断网络状态，无网络链接返回false，网络请求直接终止
+     * 判断网络状态
+     *
+     * @param context 当前执行需要判断的上下文环境
+     * @return 如果可用返回true，不可用返回false
      */
     public static boolean validateNetworkState(Context context) {
         if (context != null) {
@@ -114,6 +123,12 @@ public class GlobalMethod {
         return false;
     }
 
+    /**
+     * 获取设备信息，登陆流程中添加到备注中上传
+     *
+     * @param cxt 执行的上下文环境
+     * @return
+     */
     public static String getDeviceInfo(Context cxt) {
         TelephonyManager tm = (TelephonyManager) cxt.getSystemService(Context.TELEPHONY_SERVICE);
         String str = "";

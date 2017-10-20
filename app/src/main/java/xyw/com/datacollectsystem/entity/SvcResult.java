@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class SvcResult implements Serializable {
     /**
-     *
+     * 返回的数据，将其解析为实体对象
      */
     static final long serialVersionUID = 1346914262783309499L;
     /**

@@ -59,7 +59,6 @@ public class LoginActivitySecond extends BaseActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.login_2_design_name_pwd);
         mThis = LoginActivitySecond.this;
-
     }
 
     @Override

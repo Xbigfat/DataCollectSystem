@@ -5,6 +5,9 @@ package xyw.com.datacollectsystem.entity;
  */
 
 public class ServiceObj {
+    /*
+    请求服务的实体对象
+     */
     /**
      * 功能编码
      */
@@ -16,9 +19,7 @@ public class ServiceObj {
     /**
      * 服务返回状态
      *
-     * @since 0 正确
-     * @since 1 错误
-     * @since 2,3,4...其他提示信息
+     * @since 2, 3, 4...其他提示信息
      */
     public int status = 1;
     /**

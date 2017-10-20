@@ -5,6 +5,9 @@ package xyw.com.datacollectsystem.entity;
  */
 
 public class UserBean {
+    /*
+    登陆的用户对象信息
+     */
 
     /**
      * Qybh : H34010002
