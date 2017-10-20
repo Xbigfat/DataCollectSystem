@@ -25,37 +25,34 @@ import xyw.com.datacollectsystem.entity.workEntity;
  */
 
 public class SoapActionApi {
-    // private static boolean isExit = false;
-
-    // 服务地址
-
-    //	protected String url = "http://192.168.1.104/tgsService.svc?wsdl";
-//	protected String url = "http://192.168.1.248/DrvEduService/DrvEduService.svc?wsdl";
-//	protected String writeMethodName = "WriteData";
-//	private String readMethodName = "QueryData";
     private String methodName = "QueryData";//默认查询
     private String doc = "QueryDoc";
-    //	protected String serviceName = "ItgsService/";
     private int readOrWrite;
-    protected SoapObject request = null;
-
-
-    //	private final String NameSpace = "http://tempuri.org/";
-    private final int TIMEOUT = 30 * 1000;
-    protected Context mContext;
+    private SoapObject request = null;
+    private Context mContext;
     private ServiceObj sObj;
 
-    public final int REQUEST_COMPLETED = 2;
-    public final int REQUEST_ERROR = -1;
+    private final int REQUEST_COMPLETED = 2;
+    private final int REQUEST_ERROR = -1;
     public final int REQUEST_TIME_OUT = 1;
     public final int REQUEST_NOTUI_TASK = 3;
 
     private String url;
 
+    /**
+     * WebService 通用框架，构造函数
+     *
+     * @param context 请求的上下文环境
+     * @param obj     请求数据对象。 包含 ： 功能编码 function id 发送的词典 SendData 返回的状态 intState 返回数据 resultData
+     * @param choose  设置当前操作为读或者写  READDATA\WRITEDATA
+     */
     public SoapActionApi(Context context, ServiceObj obj, int choose) {
         this.mContext = context;
         this.sObj = obj;
         this.readOrWrite = choose;
+        /**
+         * 重组webservice地址
+         */
         SharedPreferences serviceip = context.getSharedPreferences("ip", Activity.MODE_PRIVATE);
         if (serviceip == null) {
             url = ServiceConstant.SADDRESS;
@@ -69,44 +66,40 @@ public class SoapActionApi {
                         + ServiceConstant.SPATH;
             }
         }
-
     }
 
 
     /**
-     * 发送请求
+     * 调用该方法开始请求webService
      *
+     * @param type 将收到的数据解析成的bean类型
      * @param <T>
+     * @return 返回一个实体对象
      */
     public <T> workEntity<T> request(Type type) {
         workEntity<T> work = new workEntity<T>();
         try {
-
             if (mContext == null) {
                 work.setResultState(REQUEST_ERROR);
                 work.setException(new Exception("上下文传输为空，连接失败！"));
                 return work;
             }
-
-    /*        if(StringUtils.isEmpty(sObj.curFzjg)){
-                sObj.curFzjg = "";//IntegratedApp.getInstance().getUser().getFZJG();
-            }
-            if(Parameters.DEBUG){
-                Log.i("soapApi", sObj.curFzjg);
-            }
-*/
-
+            /**
+             * 设置操作的方法类型
+             */
             if (readOrWrite == ServiceConstant.WRITE) {
-
                 methodName = ServiceConstant.WRITEDATA;
-
                 doc = ServiceConstant.WRITEDOC;
             } else if (readOrWrite == ServiceConstant.READ) {
-
                 methodName = ServiceConstant.QUERYDATA;
-
                 doc = ServiceConstant.QUERYDOC;
             }
+            /**
+             * 构造一个名称为 request 的 SoapObject
+             * 设置 request 添加到 envelope 的 bodyOut 中去
+             * 包含命名空间、方法名称、提交的3个参数
+             *  sn:sn_MobileApp jkid: 接口ID Json : encrypted data
+             */
             request = new SoapObject(ServiceConstant.NAMESPACE + "/", methodName);
             request.addProperty(ServiceConstant.SN, ServiceConstant.SN_MOBILEAPP);
             request.addProperty(ServiceConstant.JKID, sObj.functionId);
@@ -119,45 +112,65 @@ public class SoapActionApi {
                     e.printStackTrace();
             }
             request.addProperty(doc, s);
-
-            // soapheader在这里
+            /**
+             * 制作识别的 headerOut
+             * 添加到 envelope 的 headerOut中去
+             * 包括 命名空间
+             */
             Element[] header = new Element[1];
-            header[0] = new Element().createElement(ServiceConstant.NAMESPACE + "/",
-                    "header");
+            header[0] = new Element().createElement(ServiceConstant.NAMESPACE + "/", "header");
             header[0].addChild(Node.TEXT, "");
-
-            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
-                    SoapEnvelope.VER11);
+            /**
+             * 创建 SoapSerializationEnvelope 对象 ，envelope 设定为 VER.11
+             * 添加进去
+             */
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
             envelope.headerOut = header;
             envelope.dotNet = true;
             envelope.bodyOut = request;
             envelope.setOutputSoapObject(request);
-            HttpTransportSE ht = new HttpTransportSE(url, TIMEOUT);
-            try {
-                if (Parameters.DEBUG) ht.debug = true;
-                ht.call(ServiceConstant.NAMESPACE + "/" + ServiceConstant.SNAME + methodName, envelope);
-                if (Parameters.DEBUG) Log.i("", ht.responseDump);// i = TIMEOUT_COUNT;
-            } catch (Exception e) {
-                if (Parameters.DEBUG) {
+            /**
+             * 创建 HT 对象，将 envelope 添加到 Ht中
+             * 调用 call 方法发起请求
+             */
+            HttpTransportSE ht = new HttpTransportSE(url, 4000);
+            int i = 0;
+            while (i < 2) {
+                try {
+                    if (Parameters.DEBUG) ht.debug = true;
+                    ht.call(ServiceConstant.NAMESPACE + "/" + ServiceConstant.SNAME + methodName, envelope);
+                    if (Parameters.DEBUG) Log.i("", ht.responseDump);
+                    break;
+                } catch (Exception e) {
+                    /**
+                     * 请求出错处理
+                     */
+                    Log.i("request timeout", "the " + i + " fatal");
                     e.printStackTrace();
+                    //work.setResultState(REQUEST_ERROR);
+                    //work.setException(e);
+                    //return work;
                 }
-                work.setResultState(REQUEST_ERROR);
-                work.setException(e);
+                i++;
+            }
+            if (i == 2) {
+                work.setResultState(workEntity.REQUEST_TIME_OUT);
                 return work;
             }
+            /**
+             * 收到的数据处理
+             */
             sObj.resultData = envelope.getResponse().toString();
             if (sObj.resultData.trim().equals("anyType{}")) {
                 work.setResultState(REQUEST_ERROR);
-                work.setException(new Exception("网络连接错误！"));
+                work.setException(new Exception("anyType异常"));
                 return work;
             }
             String result = sObj.resultData;
             try {
                 result = AES.Decrypt(sObj.resultData);
             } catch (Exception e) {
-                // TODO: handle exception
-                if (Parameters.DEBUG)
-                    e.printStackTrace();
+                if (Parameters.DEBUG) e.printStackTrace();
             }
             if (Parameters.DEBUG) Log.i("", result);
             Gson g = new Gson();
@@ -165,17 +178,12 @@ public class SoapActionApi {
             T t = g.fromJson(result, type);
             work.setData(t);
             return work;
-
-
-        } catch (Exception e) {// 请求出错开始-----------------------------------------------------------------------------
+        } catch (Exception e) {
             if (Parameters.DEBUG)
                 e.printStackTrace();
             work.setResultState(REQUEST_ERROR);
             work.setException(e);
             return work;
-        }// 请求出错结束------------------------------------------------------------------------------------------------
-
+        }
     }
-
-
 }

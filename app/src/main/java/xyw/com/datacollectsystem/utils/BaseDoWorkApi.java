@@ -79,8 +79,7 @@ public class BaseDoWorkApi<T> {
             switch (msg.what) {
                 case workEntity.REQUEST_ERROR:// 请求出错
                     if (localWorkListener != null) {
-                        localWorkListener.onRequestError(entity.getData(),
-                                entity.getException());
+                        localWorkListener.onRequestError(entity.getData(), entity.getException());
                     }
                     break;
                 case workEntity.REQUEST_TIME_OUT:// 请求超时
