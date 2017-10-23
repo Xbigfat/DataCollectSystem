@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import xyw.com.datacollectsystem.R;
-import xyw.com.datacollectsystem.activity.LoginActivitySecond;
+import xyw.com.datacollectsystem.activity.LoginActivity;
 import xyw.com.datacollectsystem.entity.AppVersion;
 import xyw.com.datacollectsystem.entity.workEntity;
 import xyw.com.datacollectsystem.utils.ActivityController;
@@ -90,7 +90,7 @@ public class CheckVersion {
                     update(obj.getUrl(), obj.getDescription());
                 } else {
                     makeToast(mContext, "已经是最新版本");
-                    Intent intent = new Intent(mContext, LoginActivitySecond.class);
+                    Intent intent = new Intent(mContext, LoginActivity.class);
                     mContext.startActivity(intent);
                     mContext.finish();
                 }
@@ -105,7 +105,7 @@ public class CheckVersion {
             public void onRequestError(AppVersion obj, Exception e) {
                 makeToast(mContext, "版本更新检查失败");
                 e.printStackTrace();
-                Intent intent = new Intent(mContext, LoginActivitySecond.class);
+                Intent intent = new Intent(mContext, LoginActivity.class);
                 mContext.startActivity(intent);
                 mContext.finish();
             }
