@@ -45,7 +45,7 @@ public class GlobalMethod {
      */
     public static void changeServerGlobal(final Context context) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        final View serverDialog = layoutInflater.inflate(R.layout.login_change_server_dialog, null);
+        final View serverDialog = layoutInflater.inflate(R.layout.global_change_server_dialog, null);
         final SharedPreferences serviceip = context.getSharedPreferences("ip", MODE_PRIVATE);
         final EditText setIp = (EditText) serverDialog.findViewById(R.id.dialog_server_adress);
         final EditText setPort = (EditText) serverDialog.findViewById(R.id.dialog_server_port);

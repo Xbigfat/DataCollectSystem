@@ -57,7 +57,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void init() {
         getSupportActionBar().hide();
-        setContentView(R.layout.login_2_design_name_pwd);
+        setContentView(R.layout.login_activity);
         mThis = LoginActivity.this;
     }
 
