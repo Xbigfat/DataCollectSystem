@@ -108,8 +108,9 @@ public class SoapActionApi {
                 s = AES.Encrypt(sObj.sendData);
             } catch (Exception e) {
                 // TODO: handle exception
-                if (Parameters.DEBUG)
+                if (Parameters.DEBUG) {
                     e.printStackTrace();
+                }
             }
             request.addProperty(doc, s);
             /**
@@ -137,9 +138,13 @@ public class SoapActionApi {
             int i = 0;
             while (i < 2) {
                 try {
-                    if (Parameters.DEBUG) ht.debug = true;
+                    if (Parameters.DEBUG) {
+                        ht.debug = true;
+                    }
                     ht.call(ServiceConstant.NAMESPACE + "/" + ServiceConstant.SNAME + methodName, envelope);
-                    if (Parameters.DEBUG) Log.i("", ht.responseDump);
+                    if (Parameters.DEBUG) {
+                        Log.i("", ht.responseDump);
+                    }
                     break;
                 } catch (Exception e) {
                     /**
@@ -147,9 +152,7 @@ public class SoapActionApi {
                      */
                     Log.i("request timeout", "the " + i + " fatal");
                     e.printStackTrace();
-                    //work.setResultState(REQUEST_ERROR);
-                    //work.setException(e);
-                    //return work;
+
                 }
                 i++;
             }
@@ -161,7 +164,7 @@ public class SoapActionApi {
              * 收到的数据处理
              */
             sObj.resultData = envelope.getResponse().toString();
-            if (sObj.resultData.trim().equals("anyType{}")) {
+            if ("anyType{}".equals(sObj.resultData.trim())) {
                 work.setResultState(REQUEST_ERROR);
                 work.setException(new Exception("anyType异常"));
                 return work;
@@ -170,17 +173,22 @@ public class SoapActionApi {
             try {
                 result = AES.Decrypt(sObj.resultData);
             } catch (Exception e) {
-                if (Parameters.DEBUG) e.printStackTrace();
+                if (Parameters.DEBUG) {
+                    e.printStackTrace();
+                }
             }
-            if (Parameters.DEBUG) Log.i("", result);
+            if (Parameters.DEBUG) {
+                Log.i("", result);
+            }
             Gson g = new Gson();
             work.setResultState(REQUEST_COMPLETED);
             T t = g.fromJson(result, type);
             work.setData(t);
             return work;
         } catch (Exception e) {
-            if (Parameters.DEBUG)
+            if (Parameters.DEBUG) {
                 e.printStackTrace();
+            }
             work.setResultState(REQUEST_ERROR);
             work.setException(e);
             return work;

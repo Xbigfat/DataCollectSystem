@@ -8,6 +8,9 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 
 import xyw.com.datacollectsystem.R;
@@ -117,5 +120,16 @@ public class EditTextWithClear extends EditText implements View.OnFocusChangeLis
             }
         }
         return super.onTouchEvent(event);
+    }
+
+    public void setShakeAnim() {
+        this.setAnimation(shakeAnimation(5));
+    }
+
+    private static Animation shakeAnimation(int counts) {
+        Animation translateAnimation = new TranslateAnimation(0, 10, 0, 0);
+        translateAnimation.setInterpolator(new CycleInterpolator(counts));
+        translateAnimation.setDuration(1000);
+        return translateAnimation;
     }
 }

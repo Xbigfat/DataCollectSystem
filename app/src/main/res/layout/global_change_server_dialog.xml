@@ -34,7 +34,6 @@
         android:digits="1234567890."
         android:ems="10"
         android:hint="请输入服务器地址"
-        android:inputType="phone"
         android:maxLines="1"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"

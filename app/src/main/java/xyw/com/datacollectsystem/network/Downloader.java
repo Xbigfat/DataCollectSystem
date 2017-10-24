@@ -69,7 +69,9 @@ public class Downloader {
         mContext = context;
         downloadUrl = url;
         downloadFilePath = filePath;
-        if (threadNum > 0) downloadThreadNum = threadNum;
+        if (threadNum > 0) {
+            downloadThreadNum = threadNum;
+        }
     }
 
     /**
@@ -79,7 +81,9 @@ public class Downloader {
         if (onDownloadListener != null) {
             onDownloadListener.onDownloadProgress(fileSize, downloadedSize);
         }
-        if (downloadThreadNum < 1) downloadThreadNum = 5;
+        if (downloadThreadNum < 1) {
+            downloadThreadNum = 5;
+        }
         try {
             // 文件夹路径不存在则创建
             String dir = downloadFilePath.substring(0, downloadFilePath.lastIndexOf("/"));
@@ -108,7 +112,9 @@ public class Downloader {
             if (msg.what == DOWNLOAD_COMPLETED) {//完成
                 if (onDownloadListener != null) {
                     byte[] bData = null;
-                    if (isReturnByteData && msg.obj != null) bData = (byte[]) msg.obj;
+                    if (isReturnByteData && msg.obj != null) {
+                        bData = (byte[]) msg.obj;
+                    }
                     onDownloadListener.onDownloadCompleted(bData);
                 }
             }
@@ -160,13 +166,17 @@ public class Downloader {
                     byte[] bts = new byte[1024];
 
                     ByteArrayOutputStream baos = null;
-                    if (isReturnByteData) baos = new ByteArrayOutputStream();
+                    if (isReturnByteData) {
+                        baos = new ByteArrayOutputStream();
+                    }
 
                     int len = 0;
                     while ((len = is.read(bts)) != -1) {
                         fos.write(bts, 0, len);
 
-                        if (isReturnByteData) baos.write(bts, 0, len);
+                        if (isReturnByteData) {
+                            baos.write(bts, 0, len);
+                        }
 
                         downloadedSize += len;
                         Message message1 = handler.obtainMessage(DOWNLOAD_PROGRESS, null);
@@ -174,7 +184,9 @@ public class Downloader {
                     }
 
                     byte[] bData = null;
-                    if (isReturnByteData) bData = baos.toByteArray();
+                    if (isReturnByteData) {
+                        bData = baos.toByteArray();
+                    }
 
                     Message message1 = handler.obtainMessage(DOWNLOAD_COMPLETED, bData);
                     handler.sendMessage(message1);
@@ -197,7 +209,9 @@ public class Downloader {
                     int start = i * blockSize;
                     int end = (i + 1) * blockSize - 1;
                     // 最后一个线程 将余数加进去
-                    if (i == threadNum - 1) end = end + downloadSizeMore;
+                    if (i == threadNum - 1) {
+                        end = end + downloadSizeMore;
+                    }
                     FileDownloadThread fdt = new FileDownloadThread(url, file,
                             start, end);
                     fdt.setName("Thread(downloadTask)(" + downloadUrl + "):" + i);

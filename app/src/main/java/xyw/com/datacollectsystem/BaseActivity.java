@@ -10,6 +10,7 @@ import xyw.com.datacollectsystem.utils.ActivityController;
 
 /**
  * Created by 31429 on 2017/9/6.
+ * @author 31429
  */
 
 public abstract class BaseActivity extends AppCompatActivity {

@@ -10,17 +10,12 @@ import xyw.com.datacollectsystem.network.CheckVersion;
 
 /**
  * Created by 31429 on 2017/9/7.
+ *
+ * @author 31429
  */
 
 public class Splash extends BaseActivity {
     private Splash mThis = Splash.this;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        CheckVersion checkVersion = new CheckVersion(mThis);
-        checkVersion.request();
-    }
 
     @Override
     protected void init() {
@@ -37,6 +32,13 @@ public class Splash extends BaseActivity {
     @Override
     protected void setListener() {
 
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        CheckVersion checkVersion = new CheckVersion(mThis);
+        checkVersion.request();
     }
 
 }

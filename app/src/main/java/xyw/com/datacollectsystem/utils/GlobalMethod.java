@@ -51,17 +51,17 @@ public class GlobalMethod {
         final EditText setPort = (EditText) serverDialog.findViewById(R.id.dialog_server_port);
         final EditText setService = (EditText) serverDialog.findViewById(R.id.dialog_method_name);
         if (serviceip == null) {
-            setIp.setText(ServiceConstant.IP);//serviceip.getString("ip", "172.172.0.20")
-            setPort.setText(ServiceConstant.PORT);//serviceip.getString("port", "8082")
+            setIp.setText(ServiceConstant.IP);
+            setPort.setText(ServiceConstant.PORT);
             setService.setText(ServiceConstant.SSERVICE);
         } else {
             if (!serviceip.contains("ip") || !serviceip.contains("port") || !serviceip.contains("service")) {
-                setIp.setText(ServiceConstant.IP);//serviceip.getString("ip", "172.172.0.20")
-                setPort.setText(ServiceConstant.PORT);//serviceip.getString("port", "8082")
+                setIp.setText(ServiceConstant.IP);
+                setPort.setText(ServiceConstant.PORT);
                 setService.setText(ServiceConstant.SSERVICE);
             } else {
-                setIp.setText(serviceip.getString("ip", ServiceConstant.IP));//serviceip.getString("ip", "172.172.0.20")
-                setPort.setText(serviceip.getString("port", ServiceConstant.PORT));//serviceip.getString("port", "8082")
+                setIp.setText(serviceip.getString("ip", ServiceConstant.IP));
+                setPort.setText(serviceip.getString("port", ServiceConstant.PORT));
                 setService.setText(serviceip.getString("service", ServiceConstant.SSERVICE));
             }
         }
@@ -85,7 +85,7 @@ public class GlobalMethod {
                     makeToast(context, "IP地址不合法！");
                     return;
                 }
-                if (port.equals("") || service.equals("")) {
+                if ("".equals(port) || "".equals(service)) {
                     makeToast(context, "配置出错，请检查！");
                     return;
                 }

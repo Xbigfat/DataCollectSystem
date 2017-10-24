@@ -12,17 +12,13 @@ import xyw.com.datacollectsystem.R;
 
 /**
  * Created by 31429 on 2017/9/8.
+ *
+ * @author 31429
  */
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    TableRow register, collect, query, pwd_change;
-    TextView current_user;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        current_user.setText(getBaseApplication().getUser().getXm());
-    }
+    TableRow register, collect, query, modifyPassword;
+    TextView currentUser;
 
     @Override
     protected void init() {
@@ -35,8 +31,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         register = (TableRow) findViewById(R.id.main_register_tr);
         collect = (TableRow) findViewById(R.id.main_collect_tr);
         query = (TableRow) findViewById(R.id.main_query_tr);
-        pwd_change = (TableRow) findViewById(R.id.main_pwd_change_tr);
-        current_user = (TextView) findViewById(R.id.main_current_tv);
+        modifyPassword = (TableRow) findViewById(R.id.main_pwd_change_tr);
+        currentUser = (TextView) findViewById(R.id.main_current_tv);
     }
 
     @Override
@@ -44,7 +40,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         register.setOnClickListener(this);
         collect.setOnClickListener(this);
         query.setOnClickListener(this);
-        pwd_change.setOnClickListener(this);
+        modifyPassword.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        currentUser.setText(getBaseApplication().getUser().getXm());
     }
 
     @Override
@@ -61,7 +63,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 intent = new Intent(this, VehicleDataRegister.class);
                 break;
             case R.id.main_pwd_change_tr:
-                intent = new Intent(this, VehicleDataRegister.class);
+                intent = new Intent(this, ModifyPwd.class);
                 break;
             default:
                 break;

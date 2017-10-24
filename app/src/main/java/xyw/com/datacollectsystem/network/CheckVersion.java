@@ -34,6 +34,8 @@ import static xyw.com.datacollectsystem.BaseActivity.makeToast;
 
 /**
  * Created by 31429 on 2017/9/20.
+ *
+ * @author 31429
  */
 
 public class CheckVersion {
@@ -42,9 +44,9 @@ public class CheckVersion {
     private static AppVersion version = new AppVersion();
 
 
-    public CheckVersion(Activity Context) {
-        mContext = Context;
-        progressBar = new ProgressDialog(Context);
+    public CheckVersion(Activity context) {
+        mContext = context;
+        progressBar = new ProgressDialog(context);
     }
 
     public void request() {
@@ -148,18 +150,14 @@ public class CheckVersion {
         }
         int type = parser.getEventType();
         while (type != XmlPullParser.END_DOCUMENT) {
-            switch (type) {
-                case XmlPullParser.START_TAG:
-                    if ("version".equals(parser.getName())) {
-                        version.setVersion(parser.nextText());
-                    } else if ("url".equals(parser.getName())) {
-                        String surl = parser.nextText();
-                        String curl = surl.substring(surl.lastIndexOf("/"));
-                        version.setUrl(url + curl);
-                    } else if ("description".equals(parser.getName())) {
-                        version.setDescription(parser.nextText());
-                    }
-                    break;
+            if ("version".equals(parser.getName())) {
+                version.setVersion(parser.nextText());
+            } else if ("url".equals(parser.getName())) {
+                String surl = parser.nextText();
+                String curl = surl.substring(surl.lastIndexOf("/"));
+                version.setUrl(url + curl);
+            } else if ("description".equals(parser.getName())) {
+                version.setDescription(parser.nextText());
             }
             type = parser.next();
         }
@@ -182,21 +180,23 @@ public class CheckVersion {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
                         intent.setAction("android.intent.action.VIEW");
-                        Uri content_url = Uri.parse(url);
-                        intent.setData(content_url);
+                        Uri contentUrl = Uri.parse(url);
+                        intent.setData(contentUrl);
                         mContext.startActivity(intent);
                         ActivityController.finishAll();
                     }
                 })
                 .setPositiveButton("更新", new DialogInterface.OnClickListener() {
 
+                    @Override
                     public void onClick(DialogInterface dialog, int whichButton) {
                         progressBar.setMessage("开始下载...");
                         progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                         progressBar.setMax(100);
                         progressBar.setProgress(0);
-                        if (!progressBar.isShowing())
+                        if (!progressBar.isShowing()) {
                             progressBar.show();
+                        }
                         download(url);
                     }
                 }).show();
@@ -218,7 +218,6 @@ public class CheckVersion {
             public void onDownloadCompleted(byte[] data) {
                 // TODO Auto-generated method stub
                 progressBar.dismiss();
-                // Toast.makeText(mContext, "下载完成", Toast.LENGTH_SHORT).show();
                 install(apkPath);
             }
 
@@ -243,8 +242,9 @@ public class CheckVersion {
                 }
                 progressBar.setMessage("文件大小: " + Downloader.GetRealSize(size)
                         + "\n已下载: " + Downloader.GetRealSize(completed));
-                if (!progressBar.isShowing())
+                if (!progressBar.isShowing()) {
                     progressBar.show();
+                }
             }
 
         });

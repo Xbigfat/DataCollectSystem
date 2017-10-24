@@ -10,21 +10,11 @@ import xyw.com.datacollectsystem.R;
 
 /**
  * Created by 31429 on 2017/9/19.
+ *
+ * @author 31429
  */
 
 public class VehicleDataRegister extends BaseActivity {
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.vehicle_register_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
     @Override
     protected void init() {
         setContentView(R.layout.vehicle_register_default);
@@ -38,5 +28,17 @@ public class VehicleDataRegister extends BaseActivity {
     @Override
     protected void setListener() {
 
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.vehicle_register_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

@@ -6,6 +6,8 @@ import xyw.com.datacollectsystem.entity.UserBean;
 
 /**
  * Created by 31429 on 2017/9/6.
+ *
+ * @author 31429
  */
 
 public class BaseApplication extends Application {

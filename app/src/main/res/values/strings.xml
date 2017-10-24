@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">报废监管系统</string>
     <string name="serverurl">/version.xml</string>
+    <string name="key_IP">ip</string>
+    <string name="key_Port">port</string>
+    <string name="key_Service">service</string>
 </resources>

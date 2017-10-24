@@ -23,14 +23,14 @@ public class workEntity<T> implements Serializable {
         this.exception = exception;
     }
 
-    private int CurrentState = 0;
+    private int currentState = 0;
 
     public void setResultState(int state) {
-        CurrentState = state;
+        currentState = state;
     }
 
     public int getResultState() {
-        return CurrentState;
+        return currentState;
     }
 
     private T data;

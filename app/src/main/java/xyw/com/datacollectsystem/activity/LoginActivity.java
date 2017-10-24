@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,21 +39,17 @@ import static xyw.com.datacollectsystem.utils.GlobalMethod.changeServerGlobal;
 
 /**
  * Created by 31429 on 2017/9/11.
+ *
+ * @author 31429
  */
 
 public class LoginActivity extends BaseActivity {
-    private EditTextWithClear username_edtx;
-    private PasswordEditText pwd_edtx;
-    private Button login_btn;
+    private EditTextWithClear usernameEditText;
+    private PasswordEditText passwordEditText;
+    private Button loginBtn;
     private LoginActivity mThis;
-    private TextView change_server;
+    private TextView changeServer;
     private CustomProgressBarDialog pm;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initCurrentUser();
-    }
 
     @Override
     protected void init() {
@@ -63,17 +60,17 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void findViewsByID() {
-        username_edtx = (EditTextWithClear) findViewById(R.id.login_2_username);
-        pwd_edtx = (PasswordEditText) findViewById(R.id.login_2_pwd);
-        change_server = (TextView) findViewById(R.id.login_2_change_server);
-        login_btn = (Button) findViewById(R.id.login_2_log_btn);
+        usernameEditText = (EditTextWithClear) findViewById(R.id.login_2_username);
+        passwordEditText = (PasswordEditText) findViewById(R.id.login_2_pwd);
+        changeServer = (TextView) findViewById(R.id.login_2_change_server);
+        loginBtn = (Button) findViewById(R.id.login_2_log_btn);
     }
 
     @Override
     protected void setListener() {
-        login_btn.setOnClickListener(new loginBtnListener());
-        change_server.setOnClickListener(new changeServerListener());
-        username_edtx.addTextChangedListener(new TextWatcher() {
+        loginBtn.setOnClickListener(new LoginBtnListener());
+        changeServer.setOnClickListener(new ChangeServerListener());
+        usernameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -81,7 +78,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                pwd_edtx.setText(null);
+                passwordEditText.setText(null);
             }
 
             @Override
@@ -91,22 +88,34 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    private class loginBtnListener implements View.OnClickListener {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initCurrentUser();
+    }
+
+    private class LoginBtnListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            String username = usernameEditText.getText().toString();
+            String pwd = passwordEditText.getText().toString();
             if (GlobalMethod.validateNetworkState(mThis)) {
-                if (username_edtx.getText().toString().equals("") | pwd_edtx.getText().toString().equals("")) {
-                    makeToast(mThis, "请输入用户名和密码！");
-                } else {
-                    executeLogin();
+                if (username.length() == 0) {
+                    usernameEditText.setShakeAnim();
+                    return;
                 }
+                if (pwd.length() == 0) {
+                    passwordEditText.setShakeAnim();
+                    return;
+                }
+                executeLogin();
             } else {
                 makeToast(mThis, "网络不可用，请稍后再试！");
             }
         }
     }
 
-    private class changeServerListener implements View.OnClickListener {
+    private class ChangeServerListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             changeServerGlobal(mThis);
@@ -123,8 +132,8 @@ public class LoginActivity extends BaseActivity {
                 ServiceObj obj = new ServiceObj();
                 Gson g = new Gson();
                 LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-                map.put("YHDH", username_edtx.getText().toString());
-                map.put("MM", pwd_edtx.getText().toString());
+                map.put("YHDH", usernameEditText.getText().toString());
+                map.put("MM", passwordEditText.getText().toString());
                 map.put("KHDBBH", "20170929");
                 map.put("SBXH", Build.MODEL);
                 map.put("SBDH", tm.getDeviceId());
@@ -143,16 +152,17 @@ public class LoginActivity extends BaseActivity {
         work.setLocalWorkListener(new OnLocalWorkListener<SvcResult>() {
             @Override
             public void onRequestCompleted(SvcResult obj) {
-                SharedPreferences s = mThis.getSharedPreferences("current", MODE_PRIVATE);
+                SharedPreferences s = mThis.getSharedPreferences("user", MODE_PRIVATE);
                 SharedPreferences.Editor editor = s.edit();
                 pm.dismiss();
                 if (obj.getOK()) {
                     Gson g = new Gson();
                     UserBean user = g.fromJson(obj.getMessage(), UserBean.class);
                     getBaseApplication().setUser(user);
-                    editor.putString("username", username_edtx.getText().toString());
-                    editor.putString("pwd", pwd_edtx.getText().toString());
+                    editor.putString("username", usernameEditText.getText().toString());
+                    editor.putString("pwd", passwordEditText.getText().toString());
                     editor.commit();
+                    Log.i("xyw", "账号密码已保存");
                     Intent intent = new Intent(mThis, MainActivity.class);
                     startActivity(intent);
                 } else {
@@ -197,11 +207,11 @@ public class LoginActivity extends BaseActivity {
     private void initCurrentUser() {
         SharedPreferences s = mThis.getSharedPreferences("current", MODE_PRIVATE);
         if (s == null) {
-            username_edtx.setText("");
-            pwd_edtx.setText("");
+            usernameEditText.setText("");
+            passwordEditText.setText("");
         } else {
-            username_edtx.setText(s.getString("username", ""));
-            pwd_edtx.setText(s.getString("pwd", ""));
+            usernameEditText.setText(s.getString("username", ""));
+            passwordEditText.setText(s.getString("pwd", ""));
         }
     }
 }

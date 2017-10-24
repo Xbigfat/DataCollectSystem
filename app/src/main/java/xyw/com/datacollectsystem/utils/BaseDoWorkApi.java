@@ -1,10 +1,8 @@
 package xyw.com.datacollectsystem.utils;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Toast;
 
 import xyw.com.datacollectsystem.entity.workEntity;
 
@@ -18,6 +16,11 @@ public class BaseDoWorkApi<T> {
     private OnWorkListener<T> workListener;
 
     public interface OnWorkListener<T> {
+        /**
+         * 此接口位数据操作接口，在此添加数据操作的逻辑，例如请求webservice 处理数据库等
+         *
+         * @return
+         */
         workEntity<T> doWork();
     }
 
@@ -54,12 +57,12 @@ public class BaseDoWorkApi<T> {
             return;
         }
 
-        backGroundThread thread = new backGroundThread();
+        BackGroundThread thread = new BackGroundThread();
         thread.setName("doWork");
         thread.start();
     }
 
-    class backGroundThread extends Thread {
+    class BackGroundThread extends Thread {
         @Override
         public void run() {
             workEntity<T> entity = workListener.doWork();
@@ -73,6 +76,7 @@ public class BaseDoWorkApi<T> {
     }
 
     public Handler mHandler = new Handler() {
+        @Override
         public void handleMessage(Message msg) {
             Bundle bundle = msg.getData();
             workEntity<T> entity = (workEntity<T>) bundle.get("obj");
@@ -98,6 +102,8 @@ public class BaseDoWorkApi<T> {
                         localWorkListener
                                 .onRequestNotUiTask(entity.getData());
                     }
+                    break;
+                default:
                     break;
             }
         }
