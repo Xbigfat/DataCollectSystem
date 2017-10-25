@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eee">
 
-    <android.support.v4.view.ViewPager
+    <xyw.com.datacollectsystem.customviews.NoScrollViewPager
         android:id="@+id/viewPager"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:layout_editor_absoluteY="-16dp"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <requestFocus />
-    </android.support.v4.view.ViewPager>
+    </xyw.com.datacollectsystem.customviews.NoScrollViewPager>
 
 </android.support.constraint.ConstraintLayout>
