@@ -18,8 +18,8 @@ import xyw.com.datacollectsystem.fragment.RegisterManager;
  * @author 31429
  */
 
-public class VehicleDataRegister extends BaseActivity {
-    VehicleDataRegister mThis;
+public class VehicleRegister extends BaseActivity {
+    VehicleRegister mThis;
 
     @Override
     protected void init() {
@@ -39,7 +39,7 @@ public class VehicleDataRegister extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mThis = VehicleDataRegister.this;
+        mThis = VehicleRegister.this;
     }
 
     @Override

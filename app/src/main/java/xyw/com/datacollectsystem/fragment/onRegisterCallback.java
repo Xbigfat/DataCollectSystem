@@ -4,9 +4,11 @@ package xyw.com.datacollectsystem.fragment;
  * Created by 31429 on 2017/10/25.
  */
 
-public interface onRegisterCallback<T> {
+public interface onRegisterCallback {
 
-    void onNextStep();
+    void onStep1to2();
+
+    void onStep2to3();
 
     void onPrevious();
 

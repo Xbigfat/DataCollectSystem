@@ -2,12 +2,10 @@ package xyw.com.datacollectsystem.entity;
 
 /**
  * Created by 31429 on 2017/9/19.
+ * 登陆成功后解析的 用户 实体类
  */
 
 public class UserBean {
-    /*
-    登陆的用户对象信息
-     */
 
     /**
      * Qybh : H34010002

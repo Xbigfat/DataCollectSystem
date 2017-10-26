@@ -4,12 +4,13 @@ import java.io.Serializable;
 
 /**
  * Created by 31429 on 2017/10/13.
+ * <p>
+ * 返回的数据，将其解析为实体对象
  */
 
+
 public class SvcResult implements Serializable {
-    /**
-     * 返回的数据，将其解析为实体对象
-     */
+
     static final long serialVersionUID = 1346914262783309499L;
     /**
      * 操作代码。

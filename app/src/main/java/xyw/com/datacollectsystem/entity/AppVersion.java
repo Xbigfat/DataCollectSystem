@@ -2,12 +2,12 @@ package xyw.com.datacollectsystem.entity;
 
 /**
  * Created by 31429 on 2017/9/20.
+ * <p>
+ * 检查软件更新时的实体对象
  */
 
 public class AppVersion {
-    /**
-     * 检查软件更新时的实体对象
-     */
+
     private String version = null;
     private String url = null;
     private String description = null;

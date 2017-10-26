@@ -54,13 +54,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.main_register_tr:
-                intent = new Intent(this, VehicleDataRegister.class);
+                intent = new Intent(this, VehicleRegister.class);
                 break;
             case R.id.main_collect_tr:
-                intent = new Intent(this, VehicleDataRegister.class);
+                intent = new Intent(this, VehicleRegister.class);
                 break;
             case R.id.main_query_tr:
-                intent = new Intent(this, VehicleDataRegister.class);
+                intent = new Intent(this, VehicleRegister.class);
                 break;
             case R.id.main_pwd_change_tr:
                 intent = new Intent(this, ModifyPwd.class);

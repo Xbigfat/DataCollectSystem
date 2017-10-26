@@ -35,7 +35,7 @@
             android:launchMode="singleTop" />
         <!--车辆登记界面-->
         <activity
-            android:name=".activity.VehicleDataRegister"
+            android:name=".activity.VehicleRegister"
             android:label="报废车辆登记"
             android:logo="@drawable/main_icon_caiji">
             <intent-filter>

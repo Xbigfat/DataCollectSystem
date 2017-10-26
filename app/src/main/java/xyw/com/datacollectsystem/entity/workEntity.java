@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 /**
  * Created by 31429 on 2017/9/7.
+ *
+ * @author 31429
+ *         此类为实体类
  */
 
 public class workEntity<T> implements Serializable {

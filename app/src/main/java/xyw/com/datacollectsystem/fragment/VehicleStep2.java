@@ -30,7 +30,7 @@ public class VehicleStep2 extends VehicleProcess {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                scroll.onNextStep();
+                scroll.onStep2to3();
             }
         });
         return view;

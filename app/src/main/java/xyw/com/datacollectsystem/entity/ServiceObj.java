@@ -2,12 +2,12 @@ package xyw.com.datacollectsystem.entity;
 
 /**
  * Created by 31429 on 2017/10/12.
+ *
+ * 请求服务的实体对象
  */
 
 public class ServiceObj {
-    /*
-    请求服务的实体对象
-     */
+
     /**
      * 功能编码
      */

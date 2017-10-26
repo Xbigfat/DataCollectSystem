@@ -38,7 +38,7 @@ public class RegisterManager extends FragmentActivity {
         fragmentList.add(step1);
         fragmentList.add(step2);
         fragmentList.add(step3);
-        addProcess();
+        addInterface();
         viewPager = (NoScrollViewPager) findViewById(R.id.viewPager);
         FragAdapter fragAdapter = new FragAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(fragAdapter);
@@ -51,25 +51,43 @@ public class RegisterManager extends FragmentActivity {
         super.onDestroy();
     }
 
-    private void addProcess() {
+    private void addInterface() {
         for (VehicleProcess v : fragmentList) {
-            v.setScroll(new yewuluoji());
+            v.setScroll(new doWork());
         }
     }
 
-    private class yewuluoji implements onRegisterCallback {
+
+    private class doWork implements onRegisterCallback {
         @Override
-        public void onNextStep() {
+        public void onStep1to2() {
+            /**
+             * step1 to step2 回调方法，数据直接通过父类的静态成员变量传递，此处仅仅需要跳转
+             */
+            viewPager.arrowScroll(2);
+        }
+
+        @Override
+        public void onStep2to3() {
+            /**
+             * step2 to step3 回调方法
+             */
             viewPager.arrowScroll(2);
         }
 
         @Override
         public void onPrevious() {
+            /**
+             * 返回 上一个 step callback ，静态变量 不需要改变，回到 step1 的时候，会被新的数据重置
+             */
             viewPager.arrowScroll(1);
         }
 
         @Override
         public void onCompleted() {
+            /**
+             * step3 commit 数据，从 fragment 还是这里 提交到服务器还没想好
+             */
             RegisterManager.this.finish();
         }
     }
