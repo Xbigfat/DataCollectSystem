@@ -151,7 +151,7 @@ public class SoapActionApi {
                      * 请求出错处理
                      */
                     Log.i("request timeout", "the " + i + " fatal");
-                    e.printStackTrace();
+                    //e.printStackTrace();
 
                 }
                 i++;

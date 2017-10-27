@@ -35,7 +35,7 @@ import xyw.com.datacollectsystem.utils.SoapActionApi;
 public class VehicleStep1 extends VehicleProcess {
     private Spinner hplxSpinner, provinceSpinner, citySpinner;
     private String[] suoxie = {"京", "津", "沪", "渝", "冀", "豫", "云", "辽", "黑", "湘", "皖", "鲁", "新", "苏", "浙", "赣", "鄂", "桂", "甘", "晋", "蒙", "陕", "吉", "闽", "贵", "粤", "青", "藏", "川", "宁", "琼"};
-    private Button next;
+    private Button step1To2Btn;
     private EditText hphmEt;
     private View view;
     private CustomProgressBarDialog dialog;
@@ -44,9 +44,9 @@ public class VehicleStep1 extends VehicleProcess {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.vehicle_add_step1, container, false);
-        initViws();
+        findViews();
         initSpinner();
-        next.setOnClickListener(new onNextClick());
+        step1To2Btn.setOnClickListener(new onNextClick());
         return view;
     }
 
@@ -56,21 +56,24 @@ public class VehicleStep1 extends VehicleProcess {
     private class onNextClick implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            String hplx = "";
+            //获取号牌类型存入 carData
+            String hplx = ServiceConstant.hplx[hplxSpinner.getSelectedItemPosition()].substring(0, 2);
+            //组合号牌号码存入 carData
             String hphm = suoxie[provinceSpinner.getSelectedItemPosition()] + citySpinner.getSelectedItem().toString().substring(0, 1) + hphmEt.getText().toString();
             Log.i("xyw", hphm);
             carData.setHphm(hphm);
             carData.setHplx(hplx);
-            executeQuery();
+            //executeQuery();
+            scroll.onStep1to2();
         }
     }
 
-    private void initViws() {
+    private void findViews() {
         hplxSpinner = (Spinner) view.findViewById(R.id.vehicle_step1_hpzl);
         provinceSpinner = (Spinner) view.findViewById(R.id.vehicle_step1_province);
         citySpinner = (Spinner) view.findViewById(R.id.vehicle_step1_city);
         hphmEt = (EditText) view.findViewById(R.id.vehicle_step1_hphm);
-        next = (Button) view.findViewById(R.id.vehicle_step1_next);
+        step1To2Btn = (Button) view.findViewById(R.id.vehicle_step1_next);
     }
 
     private void initSpinner() {
@@ -89,6 +92,8 @@ public class VehicleStep1 extends VehicleProcess {
 
             }
         });
+        ArrayAdapter<String> hplxAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, ServiceConstant.hplx);
+        hplxSpinner.setAdapter(hplxAdapter);
     }
 
     private void executeQuery() {
