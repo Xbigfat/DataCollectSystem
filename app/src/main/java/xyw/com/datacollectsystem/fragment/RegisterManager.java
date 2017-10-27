@@ -58,7 +58,8 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
         /**
          * step1 to step2 回调方法，数据直接通过父类的静态成员变量传递，此处仅仅需要跳转
          */
-        viewPager.arrowScroll(2);
+        //viewPager.arrowScroll(2);
+        viewPager.setCurrentItem(1);
     }
 
     @Override
@@ -66,7 +67,8 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
         /**
          * step2 to step3 回调方法
          */
-        viewPager.arrowScroll(2);
+        //viewPager.arrowScroll(2);
+        viewPager.setCurrentItem(2);
     }
 
     @Override
