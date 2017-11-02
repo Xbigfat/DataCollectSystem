@@ -19,7 +19,7 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 
-    <xyw.com.datacollectsystem.customviews.EditTextWithClear
+    <com.xyw.datacollectsystem.customviews.EditTextWithClear
         android:id="@+id/login_2_username"
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -40,7 +40,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
-    <xyw.com.datacollectsystem.customviews.PasswordEditText
+    <com.xyw.datacollectsystem.customviews.PasswordEditText
         android:id="@+id/login_2_pwd"
         android:layout_width="300dp"
         android:layout_height="50dp"
