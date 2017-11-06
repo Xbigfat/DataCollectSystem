@@ -1,5 +1,6 @@
 package com.xyw.datacollectsystem.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.WindowManager;
@@ -21,7 +22,7 @@ public class Splash extends BaseActivity {
     protected void init() {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.splash_1_default);
+
     }
 
     @Override
@@ -37,8 +38,14 @@ public class Splash extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_1_default);
+        SharedPreferences s = getApplicationContext().getSharedPreferences("loginfo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = s.edit();
+        editor.putString("last run time", String.valueOf(System.currentTimeMillis()));
+        editor.apply();
         CheckVersion checkVersion = new CheckVersion(mThis);
         checkVersion.request();
     }
+
 
 }

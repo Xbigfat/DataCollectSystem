@@ -13,7 +13,7 @@ public class Parameters {
     /**
      * sdcard数据存储根目录
      */
-    public static final String SAVE_PATH_IN_SDCARD = "/vehinspectregulation/";
+    public static final String SAVE_PATH_IN_SDCARD = "/DataCollectSysCache/";
     /**
      * 日志存放目录
      */

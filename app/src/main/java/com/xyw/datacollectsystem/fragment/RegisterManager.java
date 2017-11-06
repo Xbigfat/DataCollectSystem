@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.xyw.datacollectsystem.R;
 import com.xyw.datacollectsystem.adapter.FragAdapter;
 import com.xyw.datacollectsystem.customviews.NoScrollViewPager;
 import com.xyw.datacollectsystem.utils.ActivityController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 31429 on 2017/10/25.
@@ -33,7 +33,8 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
         fragmentList.add(step1);
         fragmentList.add(step2);
         fragmentList.add(step3);
-        addInterface();
+        VehicleProcess.scroll = this;
+        //addInterface();
         viewPager = (NoScrollViewPager) findViewById(R.id.viewPager);
         FragAdapter fragAdapter = new FragAdapter(getSupportFragmentManager(), fragmentList);
         viewPager.setAdapter(fragAdapter);
@@ -42,14 +43,10 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
     @Override
     protected void onDestroy() {
         //从活动管理器中移除
+        VehicleProcess.carData = null;
+        VehicleProcess.scroll = null;
         ActivityController.removeActivity(this);
         super.onDestroy();
-    }
-
-    private void addInterface() {
-        for (VehicleProcess v : fragmentList) {
-            v.setScroll(this);
-        }
     }
 
 
@@ -85,7 +82,9 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
     public void onCompleted() {
         /**
          * step3 commit 数据，从 fragment 还是这里 提交到服务器还没想好
-         */
+         **/
+        VehicleProcess.carData = null;
+        VehicleProcess.scroll = null;
         RegisterManager.this.finish();
     }
 

@@ -10,11 +10,12 @@ import com.xyw.datacollectsystem.utils.ActivityController;
 
 /**
  * Created by 31429 on 2017/9/6.
+ *
  * @author 31429
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-    private static Toast mToast;
+    protected static Toast mToast;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityController.removeActivity(this);
     }
 
-    protected BaseApplication mApplication;
 
     public BaseApplication getBaseApplication() {
         return (BaseApplication) getApplication();
@@ -60,7 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public static void makeToast(Context context, String msg) {
         if (mToast == null) {
-            mToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+            mToast = Toast.makeText(context.getApplicationContext(), msg, Toast.LENGTH_SHORT);
         } else {
             mToast.setText(msg);
         }
@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public static void makeToast(Context context, String msg, int time) {
         if (mToast == null) {
-            mToast = Toast.makeText(context, msg, time);
+            mToast = Toast.makeText(context.getApplicationContext(), msg, time);
         } else {
             mToast.setText(msg);
         }

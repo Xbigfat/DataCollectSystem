@@ -10,7 +10,9 @@ import android.view.MenuItem;
 
 import com.xyw.datacollectsystem.BaseActivity;
 import com.xyw.datacollectsystem.R;
+import com.xyw.datacollectsystem.entity.VehicleRegisterRes;
 import com.xyw.datacollectsystem.fragment.RegisterManager;
+import com.xyw.datacollectsystem.fragment.VehicleProcess;
 
 /**
  * Created by 31429 on 2017/9/19.
@@ -55,6 +57,7 @@ public class VehicleRegister extends BaseActivity {
             case R.id.add_new_vehicle:
                 Log.i("xyw", "start register");
                 Intent intent = new Intent(mThis, RegisterManager.class);
+                VehicleProcess.carData = new VehicleRegisterRes();
                 startActivity(intent);
                 break;
             default:

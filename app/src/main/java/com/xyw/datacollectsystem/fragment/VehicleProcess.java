@@ -15,15 +15,6 @@ import com.xyw.datacollectsystem.entity.VehicleRegisterRes;
 public class VehicleProcess extends Fragment {
 
     protected static onRegisterCallback scroll;
-    protected static VehicleRegisterRes carData;
-
-    static {
-        carData = new VehicleRegisterRes();
-    }
-
-    protected void setScroll(onRegisterCallback scroll) {
-        this.scroll = scroll;
-    }
-
+    public static VehicleRegisterRes carData;
 
 }

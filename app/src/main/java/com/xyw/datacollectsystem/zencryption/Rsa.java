@@ -1,4 +1,4 @@
-package com.xyw.datacollectsystem.encryption;
+package com.xyw.datacollectsystem.zencryption;
 
 import java.math.BigInteger;
 import java.security.KeyFactory;

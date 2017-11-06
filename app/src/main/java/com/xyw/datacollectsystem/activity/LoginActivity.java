@@ -17,9 +17,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import java.util.LinkedHashMap;
-
 import com.xyw.datacollectsystem.BaseActivity;
 import com.xyw.datacollectsystem.R;
 import com.xyw.datacollectsystem.customviews.CustomProgressBarDialog;
@@ -34,6 +31,8 @@ import com.xyw.datacollectsystem.utils.GlobalMethod;
 import com.xyw.datacollectsystem.utils.OnLocalWorkListener;
 import com.xyw.datacollectsystem.utils.ServiceConstant;
 import com.xyw.datacollectsystem.utils.SoapActionApi;
+
+import java.util.LinkedHashMap;
 
 import static com.xyw.datacollectsystem.utils.GlobalMethod.changeServerGlobal;
 
@@ -136,7 +135,7 @@ public class LoginActivity extends BaseActivity {
                 map.put("MM", passwordEditText.getText().toString());
                 map.put("KHDBBH", "20170929");
                 map.put("SBXH", Build.MODEL);
-                map.put("SBDH", tm.getDeviceId());
+                map.put("SBDH", tm.getDeviceId() + "");
                 map.put("BZ", "20170929+开发中软件\n" + GlobalMethod.getDeviceInfo(mThis));
                 String sendData = g.toJson(map);
                 obj.functionId = "02W51";
@@ -205,7 +204,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initCurrentUser() {
-        SharedPreferences s = mThis.getSharedPreferences("current", MODE_PRIVATE);
+        SharedPreferences s = mThis.getSharedPreferences("user", MODE_PRIVATE);
         if (s == null) {
             usernameEditText.setText("");
             passwordEditText.setText("");

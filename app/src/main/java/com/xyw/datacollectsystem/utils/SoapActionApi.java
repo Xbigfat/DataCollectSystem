@@ -16,7 +16,7 @@ import org.kxml2.kdom.Node;
 
 import java.lang.reflect.Type;
 
-import com.xyw.datacollectsystem.encryption.AES;
+import com.xyw.datacollectsystem.zencryption.AES;
 import com.xyw.datacollectsystem.entity.ServiceObj;
 import com.xyw.datacollectsystem.entity.workEntity;
 
