@@ -39,17 +39,16 @@
         <activity
             android:name="com.xyw.datacollectsystem.activity.VehicleRegister"
             android:label="报废车辆登记"
-            android:logo="@drawable/main_icon_caiji">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
+            android:logo="@drawable/main_icon_caiji" />
         <!--修改密码界面-->
         <activity
             android:name="com.xyw.datacollectsystem.activity.ModifyPwd"
             android:label="修改密码" />
         <activity android:name="com.xyw.datacollectsystem.fragment.RegisterManager" />
+
+        <activity
+            android:name=".activity.UploadMoreInfo"
+            android:label="详细信息采集" />
 
     </application>
 

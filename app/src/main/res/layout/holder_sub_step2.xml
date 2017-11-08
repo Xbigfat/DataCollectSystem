@@ -7,7 +7,7 @@
     android:background="#eee">
 
     <ProgressBar
-        android:id="@+id/vehicle_step2_loading"
+        android:id="@+id/step2_loading"
         style="@android:style/Widget.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/vehicle_step2_clpp"
+        android:id="@+id/step2_clpp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -83,14 +83,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <TextView
-        android:id="@+id/vehicle_step2_czxm"
+        android:id="@+id/step2_czxm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
         android:text="张三丰"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView43"
-        app:layout_constraintLeft_toLeftOf="@+id/vehicle_step2_clpp" />
+        app:layout_constraintLeft_toLeftOf="@+id/step2_clpp" />
 
     <View
         android:id="@+id/view4"
@@ -134,7 +133,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_clxh"
+                android:id="@+id/step2_clxh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="C220 4 Matic"
@@ -152,7 +151,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_cllx"
+                android:id="@+id/step2_cllx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="车辆类型"
@@ -171,7 +170,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_clsbdh"
+                android:id="@+id/step2_clsbdh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="车辆识别代号"
@@ -189,7 +188,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_fdjh"
+                android:id="@+id/step2_fdjh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="发动机号"
@@ -207,7 +206,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_ccrq"
+                android:id="@+id/step2_ccrq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="出厂日期"
@@ -225,7 +224,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_qzbfqz"
+                android:id="@+id/step2_qzbfqz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="强制报废期止"
@@ -243,7 +242,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_jyyx"
+                android:id="@+id/step2_jyyx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="检验有效期至"
@@ -261,7 +260,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_syxz"
+                android:id="@+id/step2_syxz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="使用性质"
@@ -279,7 +278,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/vehicle_step2_jdczt"
+                android:id="@+id/step2_jdczt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="机动车状态"
@@ -288,7 +287,7 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/vehicle_step2_next"
+        android:id="@+id/step2_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
@@ -299,7 +298,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 
     <Button
-        android:id="@+id/vehicle_step2_previous"
+        android:id="@+id/step2_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"

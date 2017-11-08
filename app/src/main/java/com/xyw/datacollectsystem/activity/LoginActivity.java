@@ -40,6 +40,8 @@ import static com.xyw.datacollectsystem.utils.GlobalMethod.changeServerGlobal;
  * Created by 31429 on 2017/9/11.
  *
  * @author 31429
+ *         <p>
+ *         登陆界面
  */
 
 public class LoginActivity extends BaseActivity {
@@ -53,16 +55,16 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void init() {
         getSupportActionBar().hide();
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.activity_login);
         mThis = LoginActivity.this;
     }
 
     @Override
     protected void findViewsByID() {
-        usernameEditText = (EditTextWithClear) findViewById(R.id.login_2_username);
-        passwordEditText = (PasswordEditText) findViewById(R.id.login_2_pwd);
-        changeServer = (TextView) findViewById(R.id.login_2_change_server);
-        loginBtn = (Button) findViewById(R.id.login_2_log_btn);
+        usernameEditText = (EditTextWithClear) findViewById(R.id.login_username_et);
+        passwordEditText = (PasswordEditText) findViewById(R.id.login_pwd_et);
+        changeServer = (TextView) findViewById(R.id.login_change_tv);
+        loginBtn = (Button) findViewById(R.id.login_btn);
     }
 
     @Override
@@ -164,6 +166,7 @@ public class LoginActivity extends BaseActivity {
                     Log.i("xyw", "账号密码已保存");
                     Intent intent = new Intent(mThis, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     editor.putString("username", "");
                     editor.putString("pwd", "");
@@ -211,6 +214,7 @@ public class LoginActivity extends BaseActivity {
         } else {
             usernameEditText.setText(s.getString("username", ""));
             passwordEditText.setText(s.getString("pwd", ""));
+            executeLogin();
         }
     }
 }

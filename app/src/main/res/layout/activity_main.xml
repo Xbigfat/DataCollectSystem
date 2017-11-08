@@ -75,7 +75,7 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/main_collect_tr"
+            android:id="@+id/main_upload_tr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/login_edit_style">

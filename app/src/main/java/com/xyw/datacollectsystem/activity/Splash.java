@@ -13,6 +13,8 @@ import com.xyw.datacollectsystem.network.CheckVersion;
  * Created by 31429 on 2017/9/7.
  *
  * @author 31429
+ *         <p>
+ *         检查更新，splash
  */
 
 public class Splash extends BaseActivity {
@@ -38,7 +40,7 @@ public class Splash extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_1_default);
+        setContentView(R.layout.activity_splash);
         SharedPreferences s = getApplicationContext().getSharedPreferences("loginfo", MODE_PRIVATE);
         SharedPreferences.Editor editor = s.edit();
         editor.putString("last run time", String.valueOf(System.currentTimeMillis()));

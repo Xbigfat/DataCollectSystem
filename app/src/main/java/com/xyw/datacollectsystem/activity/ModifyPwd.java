@@ -17,6 +17,8 @@ import com.xyw.datacollectsystem.R;
  * Created by 31429 on 2017/10/23.
  *
  * @author 31429
+ *         <p>
+ *         密码修改界面
  */
 
 public class ModifyPwd extends BaseActivity {
@@ -28,15 +30,15 @@ public class ModifyPwd extends BaseActivity {
 
     @Override
     protected void init() {
-        setContentView(R.layout.modify_password);
+        setContentView(R.layout.activity_modify_pwd);
         mThis = ModifyPwd.this;
     }
 
     @Override
     protected void findViewsByID() {
-        oldEt = (EditText) findViewById(R.id.modify_pwd_old_pwd);
-        newEt = (EditText) findViewById(R.id.modify_pwd_new);
-        renewEt = (EditText) findViewById(R.id.modify_pwd_renew);
+        oldEt = (EditText) findViewById(R.id.modify_old_pwd);
+        newEt = (EditText) findViewById(R.id.modify_new);
+        renewEt = (EditText) findViewById(R.id.modify_retype);
         submitNewBtn = (Button) findViewById(R.id.modify_submit);
         currentUserTv = (TextView) findViewById(R.id.modify_current_username);
     }

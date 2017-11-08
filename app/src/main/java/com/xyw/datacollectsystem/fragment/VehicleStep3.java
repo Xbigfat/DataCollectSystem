@@ -54,7 +54,7 @@ public class VehicleStep3 extends VehicleProcess implements View.OnClickListener
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.vehicle_add_step3, container, false);
+        View view = inflater.inflate(R.layout.holder_sub_step3, container, false);
         initView(view);
         database = new RegisterCarData(getContext(), "registerd", null, 1);
         database.getWritableDatabase();
@@ -62,12 +62,12 @@ public class VehicleStep3 extends VehicleProcess implements View.OnClickListener
     }
 
     private void initView(View view) {
-        vehicleStep3Frontleft = (ImageButton) view.findViewById(R.id.vehicle_step3_frontleft);
-        vehicleStep3Behindright = (ImageButton) view.findViewById(R.id.vehicle_step3_behindright);
-        vehicleStep3Cjh = (ImageButton) view.findViewById(R.id.vehicle_step3_cjh);
-        vehicleStep3Fdjh = (ImageButton) view.findViewById(R.id.vehicle_step3_fdjh);
-        vehicleStep3Commit = (Button) view.findViewById(R.id.vehicle_step3_commit);
-        vehicleStep3Previous = (Button) view.findViewById(R.id.vehicle_step3_previous);
+        vehicleStep3Frontleft = (ImageButton) view.findViewById(R.id.step3_frontleft);
+        vehicleStep3Behindright = (ImageButton) view.findViewById(R.id.step3_behindright);
+        vehicleStep3Cjh = (ImageButton) view.findViewById(R.id.step3_cjh);
+        vehicleStep3Fdjh = (ImageButton) view.findViewById(R.id.step3_fdjh);
+        vehicleStep3Commit = (Button) view.findViewById(R.id.step3_commit);
+        vehicleStep3Previous = (Button) view.findViewById(R.id.step3_previous);
         vehicleStep3Commit.setOnClickListener(this);
         vehicleStep3Frontleft.setOnClickListener(this);
         vehicleStep3Behindright.setOnClickListener(this);
@@ -84,7 +84,7 @@ public class VehicleStep3 extends VehicleProcess implements View.OnClickListener
             default:
                 break;
             //提交，开始上传所有文件
-            case R.id.vehicle_step3_commit:
+            case R.id.step3_commit:
                 if (!(p1 & p2 & p3 & p4)) {
                     Toast.makeText(getContext(), "照片拍摄不完全！", Toast.LENGTH_LONG).show();
                     return;
@@ -92,31 +92,31 @@ public class VehicleStep3 extends VehicleProcess implements View.OnClickListener
                 executeUpload();
                 break;
             //拍摄左前方照片
-            case R.id.vehicle_step3_frontleft:
+            case R.id.step3_frontleft:
                 createFile(FRONT_LEFT);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempImgFile));
                 startActivityForResult(intent, FRONT_LEFT);
                 break;
             //拍摄右后方照片
-            case R.id.vehicle_step3_behindright:
+            case R.id.step3_behindright:
                 createFile(BEHIND_RIGHT);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempImgFile));
                 startActivityForResult(intent, BEHIND_RIGHT);
                 break;
             //拍摄车架号照片
-            case R.id.vehicle_step3_cjh:
+            case R.id.step3_cjh:
                 createFile(CJH);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempImgFile));
                 startActivityForResult(intent, CJH);
                 break;
             //拍摄发动机号照片
-            case R.id.vehicle_step3_fdjh:
+            case R.id.step3_fdjh:
                 createFile(FDJH);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempImgFile));
                 startActivityForResult(intent, FDJH);
                 break;
             //返回上一步
-            case R.id.vehicle_step3_previous:
+            case R.id.step3_previous:
                 scroll.onPrevious();
                 break;
         }

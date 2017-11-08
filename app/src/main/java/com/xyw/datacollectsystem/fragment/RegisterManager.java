@@ -14,6 +14,16 @@ import java.util.List;
 
 /**
  * Created by 31429 on 2017/10/25.
+ *
+ * @author 31429
+ *         登记新车的主界面，嵌套一个 viewPager
+ *         viewPager 中间嵌套 3个 Fragment 实现滑动
+ *         3个 Fragment 共有1个 viewPager 的引用，用来回调 scroll 滑动
+ *         共有1个 CarData ，Step1 添加基本信息， Step2 展示基本信息，Step3 添加照片信息
+ *         待解决：
+ *         照片如何压缩？
+ *         CarData中保存 4个 照片的 Base 64 ？ blob ？还是文件URL？
+ *         上传的时候前台上传？后台上传？传Base64？传文件？
  */
 
 public class RegisterManager extends FragmentActivity implements onRegisterCallback {
@@ -23,7 +33,7 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vehicle_add_new);
+        setContentView(R.layout.holder_car_reg);
         //添加到 活动管理器中
         ActivityController.addActivity(this);
         step1 = new VehicleStep1();

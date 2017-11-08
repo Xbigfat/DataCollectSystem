@@ -73,7 +73,7 @@ public class VehicleStep2 extends VehicleProcess implements View.OnClickListener
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.vehicle_add_step2, container, false);
+        View view = inflater.inflate(R.layout.holder_sub_step2, container, false);
         initView(view);
         displayData();
         return view;
@@ -94,20 +94,20 @@ public class VehicleStep2 extends VehicleProcess implements View.OnClickListener
     }
 
     private void initView(View view) {
-        vehicleStep2Clpp = (TextView) view.findViewById(R.id.vehicle_step2_clpp);
-        vehicleStep2Czxm = (TextView) view.findViewById(R.id.vehicle_step2_czxm);
-        vehicleStep2Clxh = (TextView) view.findViewById(R.id.vehicle_step2_clxh);
-        vehicleStep2Cllx = (TextView) view.findViewById(R.id.vehicle_step2_cllx);
-        vehicleStep2Clsbdh = (TextView) view.findViewById(R.id.vehicle_step2_clsbdh);
-        vehicleStep2Fdjh = (TextView) view.findViewById(R.id.vehicle_step2_fdjh);
-        vehicleStep2Ccrq = (TextView) view.findViewById(R.id.vehicle_step2_ccrq);
-        vehicleStep2Qzbfqz = (TextView) view.findViewById(R.id.vehicle_step2_qzbfqz);
-        vehicleStep2Jyyx = (TextView) view.findViewById(R.id.vehicle_step2_jyyx);
-        vehicleStep2Syxz = (TextView) view.findViewById(R.id.vehicle_step2_syxz);
-        vehicleStep2Jdczt = (TextView) view.findViewById(R.id.vehicle_step2_jdczt);
-        vehicleStep2Next = (Button) view.findViewById(R.id.vehicle_step2_next);
+        vehicleStep2Clpp = (TextView) view.findViewById(R.id.step2_clpp);
+        vehicleStep2Czxm = (TextView) view.findViewById(R.id.step2_czxm);
+        vehicleStep2Clxh = (TextView) view.findViewById(R.id.step2_clxh);
+        vehicleStep2Cllx = (TextView) view.findViewById(R.id.step2_cllx);
+        vehicleStep2Clsbdh = (TextView) view.findViewById(R.id.step2_clsbdh);
+        vehicleStep2Fdjh = (TextView) view.findViewById(R.id.step2_fdjh);
+        vehicleStep2Ccrq = (TextView) view.findViewById(R.id.step2_ccrq);
+        vehicleStep2Qzbfqz = (TextView) view.findViewById(R.id.step2_qzbfqz);
+        vehicleStep2Jyyx = (TextView) view.findViewById(R.id.step2_jyyx);
+        vehicleStep2Syxz = (TextView) view.findViewById(R.id.step2_syxz);
+        vehicleStep2Jdczt = (TextView) view.findViewById(R.id.step2_jdczt);
+        vehicleStep2Next = (Button) view.findViewById(R.id.step2_next);
         vehicleStep2Next.setOnClickListener(this);
-        vehicleStep2Previous = (Button) view.findViewById(R.id.vehicle_step2_previous);
+        vehicleStep2Previous = (Button) view.findViewById(R.id.step2_previous);
         vehicleStep2Previous.setOnClickListener(this);
     }
 
@@ -116,10 +116,10 @@ public class VehicleStep2 extends VehicleProcess implements View.OnClickListener
         switch (v.getId()) {
             default:
                 break;
-            case R.id.vehicle_step2_next:
+            case R.id.step2_next:
                 scroll.onStep2to3();
                 break;
-            case R.id.vehicle_step2_previous:
+            case R.id.step2_previous:
                 scroll.onPrevious();
                 break;
         }

@@ -43,7 +43,7 @@ public class VehicleStep1 extends VehicleProcess {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.vehicle_add_step1, container, false);
+        view = inflater.inflate(R.layout.holder_sub_step1, container, false);
         findViews();
         initSpinner();
         step1To2Btn.setOnClickListener(new onNextClick());
@@ -69,11 +69,11 @@ public class VehicleStep1 extends VehicleProcess {
     }
 
     private void findViews() {
-        hplxSpinner = (Spinner) view.findViewById(R.id.vehicle_step1_hpzl);
-        provinceSpinner = (Spinner) view.findViewById(R.id.vehicle_step1_province);
-        citySpinner = (Spinner) view.findViewById(R.id.vehicle_step1_city);
-        hphmEt = (EditText) view.findViewById(R.id.vehicle_step1_hphm);
-        step1To2Btn = (Button) view.findViewById(R.id.vehicle_step1_next);
+        hplxSpinner = (Spinner) view.findViewById(R.id.step1_hpzl);
+        provinceSpinner = (Spinner) view.findViewById(R.id.step1_province);
+        citySpinner = (Spinner) view.findViewById(R.id.step1_city);
+        hphmEt = (EditText) view.findViewById(R.id.step1_hphm);
+        step1To2Btn = (Button) view.findViewById(R.id.step1_next);
     }
 
     private void initSpinner() {

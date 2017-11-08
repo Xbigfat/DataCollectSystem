@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/vehicle_step3_frontleft"
+        android:id="@+id/step3_frontleft"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="8dp"
@@ -48,12 +48,12 @@
         android:text="左前方照片"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="@+id/vehicle_step3_frontleft"
-        app:layout_constraintRight_toRightOf="@+id/vehicle_step3_frontleft"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_step3_frontleft" />
+        app:layout_constraintLeft_toLeftOf="@+id/step3_frontleft"
+        app:layout_constraintRight_toRightOf="@+id/step3_frontleft"
+        app:layout_constraintTop_toBottomOf="@+id/step3_frontleft" />
 
     <ImageButton
-        android:id="@+id/vehicle_step3_behindright"
+        android:id="@+id/step3_behindright"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="8dp"
@@ -74,20 +74,20 @@
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/vehicle_step3_behindright"
+        app:layout_constraintLeft_toLeftOf="@+id/step3_behindright"
         android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/vehicle_step3_behindright"
+        app:layout_constraintRight_toRightOf="@+id/step3_behindright"
         app:layout_constraintHorizontal_bias="0.5" />
 
     <ImageButton
-        android:id="@+id/vehicle_step3_cjh"
+        android:id="@+id/step3_cjh"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/vehicle_add_step3"
         android:src="@drawable/add"
-        app:layout_constraintLeft_toLeftOf="@+id/vehicle_step3_frontleft"
+        app:layout_constraintLeft_toLeftOf="@+id/step3_frontleft"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
@@ -99,19 +99,19 @@
         android:layout_marginTop="8dp"
         android:text="车架号照片"
         android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="@+id/vehicle_step3_cjh"
-        app:layout_constraintRight_toRightOf="@+id/vehicle_step3_cjh"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_step3_cjh" />
+        app:layout_constraintLeft_toLeftOf="@+id/step3_cjh"
+        app:layout_constraintRight_toRightOf="@+id/step3_cjh"
+        app:layout_constraintTop_toBottomOf="@+id/step3_cjh" />
 
     <ImageButton
-        android:id="@+id/vehicle_step3_fdjh"
+        android:id="@+id/step3_fdjh"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="17dp"
         android:background="@drawable/vehicle_add_step3"
         android:src="@drawable/add"
-        app:layout_constraintRight_toRightOf="@+id/vehicle_step3_behindright"
+        app:layout_constraintRight_toRightOf="@+id/step3_behindright"
         app:layout_constraintTop_toBottomOf="@+id/textvie" />
 
     <TextView
@@ -122,12 +122,12 @@
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView24"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/vehicle_step3_fdjh"
+        app:layout_constraintLeft_toLeftOf="@+id/step3_fdjh"
         android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/vehicle_step3_fdjh" />
+        app:layout_constraintRight_toRightOf="@+id/step3_fdjh" />
 
     <Button
-        android:id="@+id/vehicle_step3_commit"
+        android:id="@+id/step3_commit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
     <Button
-        android:id="@+id/vehicle_step3_previous"
+        android:id="@+id/step3_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

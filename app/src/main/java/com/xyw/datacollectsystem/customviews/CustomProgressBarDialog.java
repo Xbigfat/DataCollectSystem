@@ -45,7 +45,7 @@ public class CustomProgressBarDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.mydialog_loading, null);
+        View view = inflater.inflate(R.layout.dialog_loading, null);
         mProgress = (ProgressBar) view.findViewById(R.id.progress);
         mMessageView = (TextView) view.findViewById(R.id.message);
         mRefreshImage = (ImageView) view.findViewById(R.id.refresh_image);

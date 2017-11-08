@@ -20,7 +20,7 @@
         tools:layout_constraintTop_creator="1" />
 
     <com.xyw.datacollectsystem.customviews.EditTextWithClear
-        android:id="@+id/login_2_username"
+        android:id="@+id/login_username_et"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginLeft="8dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
     <com.xyw.datacollectsystem.customviews.PasswordEditText
-        android:id="@+id/login_2_pwd"
+        android:id="@+id/login_pwd_et"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginLeft="8dp"
@@ -59,11 +59,11 @@
         app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_2_username"
+        app:layout_constraintTop_toBottomOf="@+id/login_username_et"
         app:pad="20dp" />
 
     <TextView
-        android:id="@+id/login_2_change_server"
+        android:id="@+id/login_change_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="0dp"
@@ -71,11 +71,11 @@
         android:text="配置服务器"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintRight_toRightOf="@+id/login_2_log_btn"
-        app:layout_constraintTop_toBottomOf="@+id/login_2_pwd" />
+        app:layout_constraintRight_toRightOf="@+id/login_btn"
+        app:layout_constraintTop_toBottomOf="@+id/login_pwd_et" />
 
     <Button
-        android:id="@+id/login_2_log_btn"
+        android:id="@+id/login_btn"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginLeft="8dp"
@@ -88,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_2_change_server" />
+        app:layout_constraintTop_toBottomOf="@+id/login_change_tv" />
 
     <TextView
         android:id="@+id/textView18"
