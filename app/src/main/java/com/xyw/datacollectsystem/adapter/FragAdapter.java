@@ -6,16 +6,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-import com.xyw.datacollectsystem.fragment.VehicleProcess;
+import com.xyw.datacollectsystem.newcar.StepController;
 
 /**
  * Created by 31429 on 2017/10/25.
  */
 
 public class FragAdapter extends FragmentPagerAdapter {
-    private List<VehicleProcess> mFragments;
+    private List<StepController> mFragments;
 
-    public FragAdapter(FragmentManager fm, List<VehicleProcess> fragments) {
+    public FragAdapter(FragmentManager fm, List<StepController> fragments) {
         super(fm);
         // TODO Auto-generated constructor stub
         mFragments = fragments;

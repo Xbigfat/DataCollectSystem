@@ -1,4 +1,4 @@
-package com.xyw.datacollectsystem.fragment;
+package com.xyw.datacollectsystem.newcar;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,7 @@ import com.xyw.datacollectsystem.R;
  * Created by 31429 on 2017/10/25.
  */
 
-public class VehicleStep2 extends VehicleProcess implements View.OnClickListener {
+public class Step2 extends StepController implements View.OnClickListener {
     Button backToStep1Btn, step2To3Btn;
     private View view;
     /**

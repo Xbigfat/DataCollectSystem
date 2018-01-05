@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.xyw.datacollectsystem.entity.ServiceObj;
+import com.xyw.datacollectsystem.entity.workEntity;
+import com.xyw.datacollectsystem.zencryption.AES;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -15,10 +18,6 @@ import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
 
 import java.lang.reflect.Type;
-
-import com.xyw.datacollectsystem.zencryption.AES;
-import com.xyw.datacollectsystem.entity.ServiceObj;
-import com.xyw.datacollectsystem.entity.workEntity;
 
 /**
  * Created by 31429 on 2017/9/27.
@@ -134,7 +133,7 @@ public class SoapActionApi {
              * 创建 HT 对象，将 envelope 添加到 Ht中
              * 调用 call 方法发起请求
              */
-            HttpTransportSE ht = new HttpTransportSE(url, 4000);
+            HttpTransportSE ht = new HttpTransportSE(url,3000);
             int i = 0;
             while (i < 2) {
                 try {

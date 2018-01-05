@@ -1,4 +1,4 @@
-package com.xyw.datacollectsystem.fragment;
+package com.xyw.datacollectsystem.newcar;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -19,7 +19,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.xyw.datacollectsystem.R;
-import com.xyw.datacollectsystem.database.RegisterCarData;
 import com.xyw.datacollectsystem.utils.GlobalMethod;
 import com.xyw.datacollectsystem.utils.Parameters;
 
@@ -30,7 +29,7 @@ import java.io.FileNotFoundException;
  * Created by 31429 on 2017/10/25.
  */
 
-public class VehicleStep3 extends VehicleProcess implements View.OnClickListener {
+public class Step3 extends StepController implements View.OnClickListener {
     private ImageButton vehicleStep3Frontleft;
     private ImageButton vehicleStep3Behindright;
     private ImageButton vehicleStep3Cjh;
@@ -41,7 +40,6 @@ public class VehicleStep3 extends VehicleProcess implements View.OnClickListener
     private final int BEHIND_RIGHT = 2;
     private final int CJH = 3;
     private final int FDJH = 4;
-    private RegisterCarData database;
     private boolean p1, p2, p3, p4;
     /**
      * 提交登记信息
@@ -56,8 +54,6 @@ public class VehicleStep3 extends VehicleProcess implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.holder_sub_step3, container, false);
         initView(view);
-        database = new RegisterCarData(getContext(), "registerd", null, 1);
-        database.getWritableDatabase();
         return view;
     }
 

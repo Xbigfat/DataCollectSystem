@@ -81,7 +81,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/login_edit_style"
+        android:background="@drawable/btn_style"
         android:text="登陆"
         android:textColor="@color/white"
         android:textSize="18sp"

@@ -1,4 +1,4 @@
-package com.xyw.datacollectsystem.fragment;
+package com.xyw.datacollectsystem.newcar;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,24 +26,24 @@ import java.util.List;
  *         上传的时候前台上传？后台上传？传Base64？传文件？
  */
 
-public class RegisterManager extends FragmentActivity implements onRegisterCallback {
-    List<VehicleProcess> fragmentList;
+public class RegisterHolder extends FragmentActivity implements onRegisterCallback {
+    List<StepController> fragmentList;
     NoScrollViewPager viewPager;
-    VehicleProcess step1, step2, step3;
+    StepController step1, step2, step3;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.holder_car_reg);
         //添加到 活动管理器中
         ActivityController.addActivity(this);
-        step1 = new VehicleStep1();
-        step2 = new VehicleStep2();
-        step3 = new VehicleStep3();
+        step1 = new Step1();
+        step2 = new Step2();
+        step3 = new Step3();
         fragmentList = new ArrayList<>();
         fragmentList.add(step1);
         fragmentList.add(step2);
         fragmentList.add(step3);
-        VehicleProcess.scroll = this;
+        StepController.scroll = this;
         //addInterface();
         viewPager = (NoScrollViewPager) findViewById(R.id.viewPager);
         FragAdapter fragAdapter = new FragAdapter(getSupportFragmentManager(), fragmentList);
@@ -53,8 +53,8 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
     @Override
     protected void onDestroy() {
         //从活动管理器中移除
-        VehicleProcess.carData = null;
-        VehicleProcess.scroll = null;
+        StepController.carData = null;
+        StepController.scroll = null;
         ActivityController.removeActivity(this);
         super.onDestroy();
     }
@@ -93,9 +93,9 @@ public class RegisterManager extends FragmentActivity implements onRegisterCallb
         /**
          * step3 commit 数据，从 fragment 还是这里 提交到服务器还没想好
          **/
-        VehicleProcess.carData = null;
-        VehicleProcess.scroll = null;
-        RegisterManager.this.finish();
+        StepController.carData = null;
+        StepController.scroll = null;
+        RegisterHolder.this.finish();
     }
 
 }

@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.xyw.datacollectsystem.BaseActivity;
 import com.xyw.datacollectsystem.R;
 import com.xyw.datacollectsystem.entity.VehicleRegisterRes;
-import com.xyw.datacollectsystem.fragment.RegisterManager;
-import com.xyw.datacollectsystem.fragment.VehicleProcess;
+import com.xyw.datacollectsystem.newcar.RegisterHolder;
+import com.xyw.datacollectsystem.newcar.StepController;
 
 /**
  * Created by 31429 on 2017/9/19.
@@ -44,7 +44,7 @@ public class VehicleRegister extends BaseActivity implements SwipeRefreshLayout.
         //下拉刷新控件
         refresh = findViewById(R.id.refresh_controller);
         //空数据提示
-        emptyTips = findViewById(R.id.tv_empty_view);
+        emptyTips = findViewById(R.id.register_epmty_tip);
         //数据展示的ListView
         dataLv = findViewById(R.id.register_car_data);
     }
@@ -80,8 +80,8 @@ public class VehicleRegister extends BaseActivity implements SwipeRefreshLayout.
         switch (item.getItemId()) {
             case R.id.add_new_vehicle:
                 Log.i("xyw", "start register");
-                Intent intent = new Intent(mThis, RegisterManager.class);
-                VehicleProcess.carData = new VehicleRegisterRes();
+                Intent intent = new Intent(mThis, RegisterHolder.class);
+                StepController.carData = new VehicleRegisterRes();
                 startActivity(intent);
                 break;
             default:

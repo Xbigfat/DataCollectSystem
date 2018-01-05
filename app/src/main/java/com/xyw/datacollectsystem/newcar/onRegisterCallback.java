@@ -1,4 +1,4 @@
-package com.xyw.datacollectsystem.fragment;
+package com.xyw.datacollectsystem.newcar;
 
 /**
  * Created by 31429 on 2017/10/25.

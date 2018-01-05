@@ -1,4 +1,4 @@
-package com.xyw.datacollectsystem.fragment;
+package com.xyw.datacollectsystem.newcar;
 
 import android.support.v4.app.Fragment;
 
@@ -12,7 +12,7 @@ import com.xyw.datacollectsystem.entity.VehicleRegisterRes;
  */
 
 
-public class VehicleProcess extends Fragment {
+public abstract class StepController extends Fragment {
 
     protected static onRegisterCallback scroll;
     public static VehicleRegisterRes carData;

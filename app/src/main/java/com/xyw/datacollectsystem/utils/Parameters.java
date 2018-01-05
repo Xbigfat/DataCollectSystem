@@ -22,8 +22,4 @@ public class Parameters {
      * 临时文件目录
      */
     public static final String TEMP = "temp/";
-
-    public static final String BUSINESS = "business/";
-
-    public static final String LOGINUSER = "loginuser";
 }

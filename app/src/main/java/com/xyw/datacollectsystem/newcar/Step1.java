@@ -1,4 +1,4 @@
-package com.xyw.datacollectsystem.fragment;
+package com.xyw.datacollectsystem.newcar;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,7 +32,7 @@ import com.xyw.datacollectsystem.utils.SoapActionApi;
  * Created by 31429 on 2017/10/25.
  */
 
-public class VehicleStep1 extends VehicleProcess {
+public class Step1 extends StepController {
     private Spinner hplxSpinner, provinceSpinner, citySpinner;
     private String[] suoxie = {"京", "津", "沪", "渝", "冀", "豫", "云", "辽", "黑", "湘", "皖", "鲁", "新", "苏", "浙", "赣", "鄂", "桂", "甘", "晋", "蒙", "陕", "吉", "闽", "贵", "粤", "青", "藏", "川", "宁", "琼"};
     private Button step1To2Btn;

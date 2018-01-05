@@ -102,11 +102,11 @@ public class LoginActivity extends BaseActivity {
             String pwd = passwordEditText.getText().toString();
             if (GlobalMethod.validateNetworkState(mThis)) {
                 if (username.length() == 0) {
-                    usernameEditText.setShakeAnim();
+                    //usernameEditText.setShakeAnim();
                     return;
                 }
                 if (pwd.length() == 0) {
-                    passwordEditText.setShakeAnim();
+                    //passwordEditText.setShakeAnim();
                     return;
                 }
                 executeLogin();
@@ -162,15 +162,14 @@ public class LoginActivity extends BaseActivity {
                     getBaseApplication().setUser(user);
                     editor.putString("username", usernameEditText.getText().toString());
                     editor.putString("pwd", passwordEditText.getText().toString());
-                    editor.commit();
+                    editor.apply();
                     Log.i("xyw", "账号密码已保存");
                     Intent intent = new Intent(mThis, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    editor.putString("username", "");
-                    editor.putString("pwd", "");
-                    editor.commit();
+                    editor.clear();
+                    editor.apply();
                     AlertDialog dialog = new AlertDialog.Builder(mThis)
                             .setMessage(obj.getMessage())
                             .show();
@@ -201,6 +200,7 @@ public class LoginActivity extends BaseActivity {
                 pm.setCancelable(false);
                 pm.setMessage("正在登陆");
                 pm.show();
+                //111
             }
         });
         work.doWork();
@@ -212,8 +212,16 @@ public class LoginActivity extends BaseActivity {
             usernameEditText.setText("");
             passwordEditText.setText("");
         } else {
-            usernameEditText.setText(s.getString("username", ""));
-            passwordEditText.setText(s.getString("pwd", ""));
+            /*usernameEditText.setText(s.getString("username", null));
+            passwordEditText.setText(s.getString("pwd", null));
+            if ( ) executeLogin();*/
+            String username = s.getString("username", null);
+            String pwd = s.getString("pwd", null);
+            if (username == null) {
+                return;
+            }
+            usernameEditText.setText(username);
+            passwordEditText.setText(pwd);
             executeLogin();
         }
     }
